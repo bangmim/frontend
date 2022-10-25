@@ -1,0 +1,20 @@
+#포트폴리오  (수 금 - 6시간 정도)
+
+#방법
+1 클론 코딩, 창작
+2 프레임 워크 or 직접 스타일 시트 작성
+3 단순화
+
+*https://tailwindcss.com/docs/installation > 수치 참고
+
+*현대카드
+https://www.hyundaicard.com/cpb/ma/CPBMA0101_00.hc
+
+
+#Tip
+1. 전체적인 레이아웃 -> 디테일
+2. 정해진 시간에 완성하는 것이 목표
+
+
+
+

@@ -1,0 +1,62 @@
+// map(callback)
+callback 에 배열의 value, index, array를 인자로 전달한다.
+Array를 순회하면서 item에 특정한 메서드를 적용할 수 있다.
+새로운 Array를 return한다.
+
+const r = arr.map(function(value,index,array){ 
+    return value.toUpperCase();
+})
+
+console.log(r);
+
+-----------------------------
+// filter() > 조건과 함께
+ Array를 순회하며 특정한 조건에 맞는 calue로 구성된 새로운 Array를 return한다.
+
+const arr=["foo","bar","baz"];
+
+const r= arr.filter(function(value,index,array){
+    if (value.charAt(0)==='b') {  
+    return value;
+    }
+ })
+
+ console.log(r)
+
+
+
+
+
+# Destructing assignment (구조분해 할당)
+Array: Array의 item들을 개별적으로 변수에 담을 수 있게 한다.
+Object: Object의 속성들을 개별적으로 변수에 담을 수 있게 한다.
+
+// Array
+const arr = ["foo","bar","baz"];    
+const [item0, item1, item2] =arr;
+
+// Object
+const o ={prop1:"foo",prop2:"bar",prop3:"baz"}  
+const {prop1,prop2,prop3} = o;
+
+// 함수에서 Destructing 사용하기
+const o={prop1:"foo",prop2:"bar",prop3:"baz"}
+function f({object의 key값들(name이 꼭 같아야한다.다른 key값을 입력하면 error)})
+function f({prop1,prop2,prop3}) {               
+console.log(prop1)
+console.log(prop2)
+console.log(prop3)
+}
+--------------------------------------------------------------------
+ # Sperad Syntax (전개 구문)
+
+Array : Array의 item을 간단하게 복사할 수 있다.
+Object : Object의 속성을 간단하게 복사할 수 있다.
+const r=[...arr,"baz"] // push()
+const r=[...arr2, ...arr1] // concat()
+const arr=["foo","bar","baz"] // slice()
+
+const [item0, ...rest] =arr;    //...rest : 나머지 array의 item
+
+console.log(item0)  //"foo"  (item)
+console.log(rest)   //['bar','baz']  (array)

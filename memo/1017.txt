@@ -1,0 +1,21 @@
+#props
+
+(1)value 일 때
+const prop1=props.prop1;
+
+return <li>{prop1}</li>
+<C prop1="Foo"/>
+
+(2)object 일 때
+
+return(
+    <ul>
+      <li>prop1:{o.prop1}</li>
+      <li>prop2:{o.prop2}</li>
+      <li>prop3:{o.prop3}</li>
+    </ul>
+  )
+}
+
+<C o={o}/>
+

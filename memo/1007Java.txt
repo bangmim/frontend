@@ -1,0 +1,76 @@
+overlay / hidden / model
+-----------------------------
+
+<button>Open</button>
+
+<div id="overlay" class="hidden">
+    <div id="modal">
+        <h3>Modal Content</h3>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor optio quam eum non asperiores magni! Minus mollitia deserunt culpa magni, hic quaerat ducimus, vero corporis repellendus nobis excepturi blanditiis eum?</p>
+    </div>
+</div>
+
+
+<script>
+    const button=document.querySelector("button")
+    const overlay=document.getElementById("overlay")
+    const modal=document.getElementById("modal")
+
+    // button에 event를 설정한다. > overlay에 toggle
+    button.addEventListener("click",(e)=>{
+        overlay.classList.remove("hidden")
+    })
+
+    // overlay에 event 설정 
+    overlay.addEventListener("click",(e)=>{
+        // console.log(e.target);                          //overlay 안에 children이 많기 때문에, e.target이 일치하지 않을 수 있다. 
+        // e.target.classList.add("hidden")        // X -->조건문 필요.
+        // (1)
+        if(e.target===overlay){
+            e.target.classList.add("hidden")
+        }
+        // 또는
+        // (2)
+        // overlay.classList.add("hidden")
+    })
+</script>
+
+클릭해야하는 item이 많을 때에는 onclick 속성을 사용하면 좋을 것 같다.
+
+<div class="container">
+        <div class="item">
+            <img src="../../img/animal-468228__340.webp" alt="" onclick="f(this)">
+        </div>
+        <div class="item">
+            <img src="../../img/cat-2083492__340.webp" alt="" onclick="f(this)">
+        </div>
+        <div class="item">
+            <img src="../../img/fox-1284512__340.webp" alt="" onclick="f(this)">
+        </div>
+        <div class="item">
+            <img src="../../img/elephant-2380009__340.webp" alt="" onclick="f(this)">
+        </div>
+    </div>
+
+    <div id="overlay" class="hidden">
+        <div id="modal">
+            <img src="" alt="" id="main-image">
+        </div>
+    </div>
+
+    <!-- onclick속성을 사용하면 반복문을 사용하지 않아도 된다. -->
+    <script>
+        const overlay = document.getElementById("overlay")
+
+        function f(el) {
+            console.log(el.src)
+
+            overlay.classList.remove("hidden")              //overlay를 onclick > remove("hidden")
+
+            const mainImage = document.getElementById("main-image")         //id는 image 태그에!
+            mainImage.src = el.src
+        }
+        overlay.addEventListener("click", (e) => {
+            overlay.classList.add("hidden")
+        })
+    </script>

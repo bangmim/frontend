@@ -1,0 +1,73 @@
+# children에 props 전달하기 (import 수정 import React -> import React, {createContext, useContext})
+
+
+ {/* {children}을 Context로 감싸고, value의 변수(={foo})를 props로 전달하면 {children}으로, 다른 함수에서도 접근 할 수 있다.(useContext 사용)*/}
+
+
+함수 내에서 선언하기
+const (변수a)="value"; --> 다른 함수에서도 '변수a' 값을 사용해야할 때
+
+(1) 함수 밖에서 선언하기
+const (이름)Context=createContext();
+
+(2) 함수 내에서 return
+
+return(
+    <(이름)Context.Provider value={변수a}>
+        {children}
+    </(이름)Context.Provider value={변수a}>
+)
+
+(3)사용할 함수 내에서
+const (변수b)=useContext(이름Context__(1)에서 선언한 변수)'
+
+return(
+    {변수b}         //변수a의 value 출력된다.
+)
+
+# Event
+
+attribute: onEventName={callback}
+
+(1) handleClick event 
+
+//함수 정의 필요
+function handleClick(e){
+//     console.log(e)
+//     console.log(e.target)
+//   }
+return(
+<button onClick={handleClick}>Button</button>
+)
+
+// 함수 정의 필요
+/* callback > 익명함수 ("Foo"라는 텍스트(인자)를 전달하고 싶을 때 사용.) */
+function handleClick(foo){
+//     console.log(foo)
+//   }
+return(
+<button onClick={()=>handleClick("Foo")}>Button</button>
+)
+
+(2) handleChange 
+
+//함수 정의 필요
+function handleChange(e){
+    console.log(e.target.value)
+  }
+
+return(
+  <input type="text" onChange={handleChange} />
+)
+
+(3) submit event
+function handleSubmit(e){
+    e.preventDefault();     //기본값을 실행하지 않음. (form이 제출되지 않음)
+    console.log(".")
+  }
+
+return(
+    <form onSubmit={handleSubmit}>      //e.target
+    <button type="submit">Submit</button>   
+    </form>
+)

@@ -1,0 +1,22 @@
+https://www.netlify.com/ > 홈페이지 >email 로그인 >naver
+사이트 업로드 할 때에는 이름이 무조건 index.html!
+띄어쓰기 적용 안됨 > 이름 변경!
+
+포폴 폴더 안에 css도 추가 > 해당 html head에 <link rel="stylesheet" href="./style.css">
+style시트 옮기기
+
+(tailwind > 따로 시트 옮기지 않아도 됨. style 시트 작성한 경우만 실행!)
+
+
+기본값 : 모바일 기준 > md: 변경시 값
+
+
+
+#정렬
+전체선택 후 ctrl + k + f
+
+
+#
+
+flex justify-center flex-col md:flex-row
+모바일에서  행방향 >> 이후에는 열방향

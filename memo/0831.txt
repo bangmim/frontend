@@ -1,0 +1,33 @@
+node.js 설치
+
+node.js command prompt 실행 > npm install nodemon -g 입력
+
+cd 입력 후 js폴더 경로 입력
+
+nodemon 입력 후 script.js(파일) 입력
+
+스크립트에 입력된 값이 출력된다.
+console.log("hello JavaScript");
+
+출력되지 않을 때에는 프롬포트에
+ctrl + c
+
+===========================
+node.js 안되는 경우 > index.html 생성.> html5
+
+body에
+<script src="./script.js"></script> 입력
+
+
+=====================================
+https://www.daangn.com/ 
+==========================
+
+favicon > 탭 옆에 이미지 생성 > 헤드에 입력
+
+
+# 예시
+https://www.w3schools.com/html/html_favicon.asp
+
+# 변환 사이트
+https://www.favicon-generator.org/

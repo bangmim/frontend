@@ -1,0 +1,18 @@
+(1) element.nextElementSibling: DOM tree에서 같은 레벨의 바로 다음 element를 선택한다
+
+
+<div >
+    <button>Tab</button>
+    <p class="hidden">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam iusto modi, harum a esse minima voluptatem doloremque provident mollitia repudiandae totam obcaecati molestias dolores consequatur quisquam commodi vitae? Impedit, odio.</p>
+</div>
+
+<script>
+    const button=document.querySelector("button");
+
+    button.addEventListener("click",(e)=>{
+        // element.nextElementSibling: DOM tree에서 같은 레벨의 바로 다음 element를 선택한다
+        const p=e.target.nextElementSibling;
+        
+        console.log(p)
+    })
+</script>

@@ -1,0 +1,106 @@
+이론 끝 예제 시작
+모든 element > object ==> 속성과 메서드를 가지고 있다
+
+# DOM 속성 (Property)
+
+(1)innerHTML
+<script>
+        const ul=document.querySelector("ul")
+        console.log(ul)
+
+        // element.innerHTML : element내부의 tree를 문자열로 return 한다.
+        console.log(ul.innerHTML)
+
+줄바꿈이 가능하다. script에서 html로 문자열 입력이 가능하다
+        ul.innerHTML=`
+        <li>foo</li>
+        <li>bar</li>
+        <li>baz</li>
+        `
+</script>
+
+(2)classList
+    <ul>
+        <li id="foo" class="class1">foo</li>
+        <li id="bar" class="class1 class2">bar</li>
+        <li id="baz">baz</li>
+    </ul>
+
+    <script>
+        const foo=document.getElementById("foo");
+        const bar=document.getElementById("bar");
+
+        console.log(foo.classList);         //DOMTokenList  //가지고 있는 class의 이름을 list로 나타낸다.
+        console.log(bar.classList);         //DOMTokenList
+
+        console.log(foo.classList[0])
+        console.log(bar.classList[0])
+        console.log(bar.classList[1])
+
+        console.log(bar.classList.length)
+        console.log(foo.classList.length)
+    </script>
+
+(3)attribute : element의 기능을 확장시키는 속성(property) / href, id, alt, value, ... -> .으로 접근한다.
+
+const foo = document.getElementById("foo");
+console.log(이름.속성)
+console.log(foo.href)
+
+(4)style
+console.log(ul.style);      // 현재 적용되어있는 style 속성 확인
+
+ul.style.border="1px solid";         //style 적용
+       
+    //ul.style.border : ul의 style 오브젝트 안에 border 오브젝트에 접근 //.object
+console.log(ul.style.border);
+
+(4)createElement, appendChild
+    <ul>
+        <li>foo</li>
+        <li>bar</li>
+    </ul>
+
+    <script>
+        const ul=document.querySelector("ul");
+
+        // document.createElement(element) : element(태그이름)를 만든다
+        const li=document.createElement("li");
+
+        // li.innerHTML=``도 가능하다.
+        // element.textContent: element태그 내의 text에 접근한다
+        li.textContent="baz";
+
+        // console.log(li);
+
+        // element1.appendChild(element2) : element2를 element1의 마지막 자식(lastChild)으로 추가한다.
+        ul.appendChild(li);
+
+    </script>
+
+###Q반복문을 사용해서 다음 리스트를 완성해보세요
+
+    <ul></ul>
+
+    <script>
+        const ul=document.querySelector("ul");
+        const arr=["foo","bar","baz"];
+
+        // for(const i=0, ...) : 적용이 안된다. let으로 해야 한다.
+        for (let i=0; i<arr.length; i++){
+            // 반복문 안에서 li 만들어야 한다.
+            const li=document.createElement("li");
+            li.textContent=arr[i]
+            ul.appendChild(li)
+        }
+    console.log(ul)
+    </script>
+
+(5)classList.add
+element.classList.add(class) : element의 DOMTokenList에 class를 추가한다 
+        ul.classList.add("border");         //DOMTokenList- value:"border"
+        li[1].classList.add("underline")    //li 전체 선택은 안된다.인덱스로만 접근 가능
+
+(6)classList.remove
+ ul.classList.remove("border");
+        li[0].classList.remove("underline")

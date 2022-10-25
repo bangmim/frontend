@@ -1,0 +1,26 @@
+좌우의 margin은 합쳐진다 
+상하 margin은 겹치는 부분이 제거된다 (합쳐지지않음) 
+
+----------------------------------------------------
+inline > 텍스트에 효과를 적용할 때 주로 사용한다.
+
+---------------------------------------------------
+<<CSS>>참고 사이트
+
+https://getbootstrap.com/docs/5.2/getting-started/introduction/
+
+https://v1.tailwindcss.com/components/forms 
+
+---------------------------------------------------
+<<icon>>
+https://fontawesome.com/download > free download > lib 폴더에 압축 푼 폴더 넣기
+
+사용할 svg는 vscode로 연다.
+
+
+
+
+-------
+1. script 작성은 어디에
+2. hyundai 랑 airbnb랑 둘 중에 어떤거로 
+3. 아예 똑같이 하면 안되고, icon은 fontawesome에서 하는건지

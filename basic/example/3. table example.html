@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- #Table    -->
+
+    <!-- <style>
+    table{
+        /* 기본값 */
+        /* border-collapse: separate; */
+        
+        /* border 겹치는 부분이 제거된다 */
+        border-collapse:collapse;        
+    }
+    td[scope=row] {
+        font-weight: bold;
+    }
+    th, td{
+        border:1px solid #eee;
+        padding:0.5rem;
+    }
+</style> -->
+
+    <!-- <h1>Table: Basic</h1>
+
+<table>
+    <thead>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td scope="row">2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <td scope="row">3</td>
+            colspan="2" : 2개의 셀을 차지한다
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table> -->
+
+    <!-- <style>
+    table{
+        /*기본값 -> tr에 border가 적용되지 않는다 */
+        border-collapse: collapse;
+    }
+    /* thead 적어야 thead tr 에만 적용된다. */
+    thead tr{
+        border-bottom:1px solid;
+    }
+    td[scope="row"]{
+        font-weight: 700;
+    }
+    th, td{
+        padding:0.5rem;
+    }
+    /* :nth-child() odd(홀수), even(짝수) */
+    /* tbody 함께 적용하지 않으면 thead도 적용된다. */
+    tbody tr:nth-child(odd){
+        background-color: #eee;
+    }
+</style>
+
+<h1>Table: Striped rows</h1>
+
+<table>
+    <thead>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td scope="row">2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <td scope="row">3</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>  -->
+
+    <!-- <style>
+    table{
+        border-collapse: collapse;
+        caption-side:bottom;
+    }
+    thead tr{
+        border-bottom:1px solid;
+    }
+    td[scope=row]{
+        font-weight: bold;
+    }
+    th, td{
+        padding:0.5rem;
+    }
+    tbody tr{
+        border-bottom:1px solid #eee;
+    }
+    tbody tr:last-child{
+        /* 겹치는 border가 적용된다 */
+        border:none;
+    }
+    tfoot{
+        border-top:1px solid;
+        border-bottom:1px solid #eee;
+        text-align: center;
+    }
+    caption{
+        text-align : left;
+    }
+</style>
+
+
+<h1>Table: Table footer and caption</h1>
+
+<table>
+    <caption>List of user</caption>
+    <thead>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td scope="row">2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <td scope="row">3</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <td colspan="3">Footer</td>
+        <td>Footer</td>
+     
+    </tfoot>
+</table> -->
+
+
+    <!-- <style>
+    
+    table{
+        /* border: 1px dashed; */
+        width:585.41px;
+        border-collapse:collapse;
+        display: block;
+    }
+    thead{
+        border-bottom:1px solid;
+    }
+    tbody tr{
+        border-bottom:1px solid #eee;
+    }
+    td[scope=row]{
+        font-weight: bold;
+    }
+    th, td{
+        padding:0.5rem;
+    }
+    .scroll{
+        overflow: scroll;
+    }
+</style>
+
+<h1>Table: Responsive</h1>
+
+<table class="scroll">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Heading</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">1</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr>
+            <td scope="row">2</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr>
+            <td scope="row">3</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+    </tbody>
+</table> -->
+
+    <!-- <style>
+    
+    table{
+        border-collapse:collapse;
+    }
+    thead{
+        border-bottom:1px solid;
+    }
+    tbody tr{
+        border-bottom:1px solid #eee;
+    }
+    td[scope=row]{
+        font-weight: bold;
+    }
+    th, td{
+        padding:0.5rem;
+    }
+    .table-responsive{
+        border:1px dashed;
+        overflow-x:scroll;
+    }
+    /* Crom, Safari, Opera */
+    .table-responsive::-webkit-scrollbar{
+        display: none;
+    }
+    /* Ie and Edge */
+    .table-responsive{
+        -ms-overflow-style: none;
+        scrollbar-width:none;
+    }
+
+</style>
+
+<h1>Table: Responsive</h1>
+
+
+<div class="table-responsive">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">1</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <td scope="row">2</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <td scope="row">3</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            /* table-layout: auto; */
+            table-layout: fixed;
+        }
+
+        th,
+        td {
+            padding: 0.5rem;
+            border: 1px solid #eee;
+        }
+    </style>
+
+
+    <h1>Table with tabel-layout: fixed</h1>
+
+    <table>
+        <colgroup>
+            <col width="40%">
+            <col width="40%">
+            <col width="20%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Song</th>
+                <th>Artist</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>The Sliding Mr.bones (Next stop, Pottersville)</td>
+                <td>Malcolm Locker</td>
+                <td>1961</td>
+            </tr>
+            <tr>
+                <td>Witchy Woman</td>
+                <td>The Eagles</td>
+                <td>1972</td>
+            </tr>
+            <tr>
+                <td>Shining Star</td>
+                <td>Earth, Wind, and fire</td>
+                <td>1975</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+</body>
+
+</html>

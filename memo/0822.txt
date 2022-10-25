@@ -1,0 +1,55 @@
+
+ 반응형으로 만들기 > flex-col md:flex-row 
+
+<div class="flex flex-col md:flex-row gap-5 max-w-3xl mx-auto">
+
+((해석))
+@media (min-width: 768px)
+<style>
+.md\:flex-row {
+    flex-direction: row;
+}
+
+
+h-3/5 > height:60%
+
+
+
+z-index > 0 기본값. 클수록 style 우선 적용된다.
+.z-10 {
+    z-index: 10;
+}
+
+
+side bar 있을 때 main > margin 고려하기
+
+header > position: sticky가 아니라 fixed라면 >> main > margin-top 고려하기
+
+header position 적용 안하면 > block 되어 header가 고정이 안됨.
+                :fixed라면  main의 margin-top 지정해야함.
+                :sticky 면 header의 내용 block 되어 아래 element에 margin-top 지정하지 않아도 됨.
+
+sidebar position이 sticky 면 main 내용이 옆으로 정렬되지 않음.
+                            sidebar의 메뉴 아래에 main 내용이 정렬됨.
+
+
+
+#overflow된 table에 scroll 만들기
+table 속성이 아닌 table 위 속성에 입력해야 적용된다
+
+        <div class="mb-5 overflow-x-auto">
+            <table class="table-fixed" style="width:900px">  *적용 O
+            ...
+
+
+        <div class="mb-5 ">
+            <table class="table-fixed overflow-x-auto" style="width:900px">  *적용 안됨
+            ...
+
+*row: 행
+*col: 열
+
+xs : Xtra small 항상 가로로 배치
+sm : Small 768px 이하에서 표시
+md : Medium (for laptops) 992px이하에서 표시 시작
+lg : Large (for laptops) 1200px 이하에서 표시 시작

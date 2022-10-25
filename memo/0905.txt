@@ -1,0 +1,3 @@
+cd > change director
+
+cd 입력 > 폴더 copy path > nodemon script.js(파일명)

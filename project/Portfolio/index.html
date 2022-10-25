@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현대카드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="sticky top-0 ">
+        <!-- menu -->
+        <div class="p-2 top-0 z-10 border-b border-gray bg-white items-center gap-4 relative w-auto md:flex justify-between ">
+
+            <div class="inline-flex">
+                <ul class="inline-flex shrink-0">
+                    <li class="font-bold p-1">
+                        <a href="#">Hyundai Card</a>
+                    </li>
+
+                    <li>
+                        <div class="relative group ">
+                            <button class="font-bold p-1 hover:bg-gray-100">My account</button>
+                            <div class="absolute w-48 bg-white shadow hidden group-hover:block">
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="relative group ">
+                            <button class="font-bold p-1 hover:bg-gray-100">카드</button>
+                            <div class="absolute w-48 bg-white shadow hidden group-hover:block">
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="relative group ">
+                            <button class="font-bold p-1 hover:bg-gray-100">혜택</button>
+                            <div class="absolute w-48 bg-white shadow hidden group-hover:block">
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="relative group ">
+                            <button class="font-bold p-1 hover:bg-gray-100">금융</button>
+                            <div class="absolute w-48 bg-white shadow hidden group-hover:block">
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="relative group ">
+                            <button class="font-bold p-1 hover:bg-gray-100">컬쳐</button>
+                            <div class="absolute w-48 bg-white shadow hidden group-hover:block">
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="relative group ">
+                            <button class="font-bold p-1 hover:bg-gray-100">고객지원</button>
+                            <div class="absolute w-48 bg-white shadow hidden group-hover:block">
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                                <a href="#" class="block p-2 hover:bg-gray-100">Menu</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 검색 -->
+            <div class="hidden lg:inline-flex ">
+                <div class=" self-center pl-2 h-10 w-64 gap-4 border rounded-full right-0 top-1">
+                    <form class="" action="">
+                        <input type="text" class="text-xs w-full pt-2 focus:outline-none align-middle  justify-items-end "
+                            placeholder="카드, 메뉴, 혜택을 검색해보세요">
+                    </form>
+                </div>
+            </div>
+
+            <div class="hidden md:inline-flex lg:hidden">
+                <a href="">
+                    <img class="absolute rounded-full right-0 top-2 w-10 h-10"
+                        style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;"
+                        src="https://www.hyundaicard.com/docfiles/resources/pc/images/common/icon/w24/ico_searchB.png">
+                </a>
+            </div>
+        </div>
+
+        <!-- 회원가입, 로그인 -->
+        <div class="sticky flex justify-end pt-2 p-2 border-b border-gray bg-white">
+            <button class="border rounded-lg p-2 bg-gray-400 text-white hover:bg-gray-500">회원가입</button>
+            <button id="rogin" class="border rounded-lg p-2 bg-black text-white hover:bg-gray-700"> <a href="./login-example.html">로그인</a></button>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div id="container" class="justify-center">
+        <div class="items-center mb-5 mt-5">
+            <h2 class="text-center font-bold">생활 속 특별한 혜택
+                <br>
+                더 풍성한 현대카드 혜택을 확인하세요
+            </h2>
+            <br>
+            <div class="text-blue-500 text-center font-bold">
+                <a href="./login-example.html">로그인 후 혜택 확인하기 ></a>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <!-- grid -->
+    <div class="flex justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-fit h-fit flex-wrap">
+            <!-- M혜택 -->
+            <div class="bg-sky-600/75 rounded-md p-4 m-2 flex-nowrap">
+                <a class="" href="">
+                    <h3 class="text-xl text-white font-bold">
+                        <strong class="text-base font-semibold">M혜택</strong>
+                        <br>
+                        M포인트
+                        <br>
+                        더 많이 적립하고
+                        <br>
+                        더 잘 사용하는 법
+                    </h3>
+                    <br>
+                    <div class="flex font-semibold">
+                        <p class="text-sm text-white ">
+                            <strong>
+                                모든 가맹점
+                                <br>
+                                업종별 차등 적립
+                            </strong>
+                            <br>
+                            <br>
+                            <span class="text-justify text-2xl font-semibold">
+                                0.5~3%
+                            </span>
+                        </p>
+                        <span>
+                            <img class="bg-none"
+                                style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;"
+                                src="https://www.hyundaicard.com/docfiles/resources/pc/images/common/icon/w32/ico_x_b_wht.png">
+                        </span>
+                        <p class="text-sm text-white">
+                            <strong>
+                                이용금액별
+                                <br>
+                                배수적립
+                            </strong>
+                            <br>
+                            <br>
+                            <span class="text-justify text-2xl font-semibold">
+                                1~2배
+                            </span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <!-- X혜택 -->
+            <div class="bg-orange-600/75 rounded-md p-4 m-2 flex-nowrap">
+                <a class="" href="">
+                    <h3 class="text-xl text-white font-bold">
+                        <strong class="text-base font-semibold">X혜택</strong>
+                        <br>
+                        사용처
+                        <br>
+                        찾을 필요 없이
+                        <br>
+                        매월 할인받는 법
+                    </h3>
+                    <br>
+                    <div class="flex">
+                        <ul
+                            class="flex flex-nowrap text-sm text-white gap-4 box-border font-semibold justify-center items-center">
+                            <div class="flex gap-4">
+                                <div class="w-24">
+                                    <div class="">
+                                        기본할인
+                                    </div>
+                                    <div class="h-10 bg-white text-orange-600 text-center rounded-md pt-2">
+                                        <span class="">0.5~1.5%</span>
+                                    </div>
+                                </div>
+                                <div class="w-24">
+                                    <div class="">
+                                        5% 할인
+                                    </div>
+                                    <div class="h-20 bg-white text-orange-600 text-center rounded-md pt-7">
+                                        <span>5%</span>
+                                    </div>
+
+                                </div>
+                                <div class="w-24">
+                                    <div class="whitespace-nowrap">
+                                        시즌 스페셜 할인
+                                    </div>
+                                    <div class="h-32 bg-white text-orange-600 text-center rounded-md pt-14">
+                                        <span>5~10%</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <!-- 자동차 구매 혜택 -->
+            <div class="flex bg-neutral-100/75 rounded-md p-4 m-2 flex-wrap">
+                <a href="">
+                    <h3 class="text-xl text-black font-bold">
+                        <strong class="mb-2 text-xs font-semibold text-neutral-500">자동차 구매 혜택</strong>
+                        <br>
+                        <span>
+                            차 살 때 M포인트
+                            <br>
+                            적립하고 M포인트로
+                            <br>
+                            차 바꾸기
+                        </span>
+                    </h3>
+                    <br>
+
+                    <div class="inline-flex gap-7">
+                        <div class="top font-semibold text-center text-sm">
+                            <div class="inline-flex">
+                                <div class="w-20 h-20 circle rounded-full bg-blue-700 pt-5 justify-center">
+                                    <p>M 포인트</p>
+                                    <p class="text-white">2%</p>
+                                </div>
+                                <div class="w-20 h-20 circle rounded-full bg-blue-900 pt-5 justify-center text-center">
+                                    <p class=""><img class="w-7 ml-6 " src="./img/card-2864882_960_720.png" alt="">
+                                    </p>
+                                    <p class="text-white pt-1">30%</p>
+                                </div>
+                            </div>
+                            <div class=" block">
+                                <p class="text-xs text-neutral-600 pt-4">현대차 구매시 최대 1.5% M포인트 <br> +30% 블루멤버스 동시 적립</p>
+                            </div>
+                        </div>
+
+                        <div class="top font-semibold text-center text-sm">
+                            <div class="inline-flex">
+                                <div class="w-20 h-20 circle rounded-full bg-blue-700 pt-5 justify-center">
+                                    <p>M 포인트</p>
+                                    <p class="text-white">1.5%</p>
+                                </div>
+                                <div class="w-20 h-20 circle rounded-full bg-blue-900 pt-5 justify-center">
+                                    <p><img class="w-7 ml-6" src="./img/card-2864882_960_720.png" alt=""></p>
+                                    <p class="text-white pt-1">2만</p>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 block">
+                                <p class="text-xs text-neutral-600">기아차 구매시 최대 1.5% M포인트 <br>+ 2만 기아포인트 동시 적립</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- 현대카드 클럽 서비스 -->
+            <div class="flex bg-neutral-100/75 rounded-md p-4 m-2 flex-nowrap">
+                <a href="mb-2 text-base font-semibold text-neutral-500">
+                    <h3 class="text-xl text-black font-bold">
+                        <strong class="mb-2 text-xs font-semibold text-neutral-500">현대카드 클럽서비스</strong>
+                        <br>
+                        <span>
+                            현카가 엄선한
+                            <br>
+                            고메/패션/호텔/컬처 할인
+                        </span>
+                    </h3>
+                    <br>
+                    <p><img src="./img/istockphoto-1397690929-170667a.jpg" alt=""></p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <hr class="mt-10" style="color:dimgray">
+    <!-- Footer-->
+
+
+    <div class="flex justify-center flex-col md:flex-row">
+        <div class="inline-flex ">
+            <div class="">
+                <div class="w-48 m-10 text-xs ">
+                    <div class="inline-flex items-center mb-1 ">
+                        <p class="w-24 font-bold ">고객센터</p>
+                        <p class="">1577-6000</p>
+                    </div>
+                    <div class="block w-40 items-center text-neutral-600 mb-2">
+                        <p>외국인(Foreigner) 청각장애인을 위한 상담 안내 서비스를 제공합니다.</p>
+                    </div>
+                    <ul class="">
+                        <li class="inline-flex items-center w-auto text-xs mb-2">
+                            <p class="w-24 font-bold ">카드신청</p>
+                            <p class="">1577-0100</p>
+                        </li>
+                        <li class="inline-flex items-center w-auto text-xs mb-2">
+                            <p class="w-24 font-bold ">금융신청</p>
+                            <p class="">1577-6100</p>
+                        </li>
+                        <li class="inline-flex items-center w-auto text-xs mb-2">
+                            <p class="w-24 font-bold ">도난분실신고</p>
+                            <p class="">1577-6200</p>
+                        </li>
+                        <li class="flex items-center w-auto text-xs mb-2">
+                            <p class="w-24 font-bold ">해외</p>
+                            <p class="flex">82-2-3015-9000</p>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="inline-flex ">
+            <div class="  ">
+                <div class="w-48 m-10 text-xs">
+                    <div class="">
+                        <h3 class="font-bold mb-2">회사소개</h3>
+                    </div>
+                    <div class="">
+                        <ul class="text-neutral-600">
+                            <li class="mb-2"><a href="">회사소개(한글 ENG)</a></li>
+                            <li class="mb-2"><a href="">영업점 안내</a></li>
+                            <li class="mb-2"><a href="">개인정보 처리방침</a></li>
+                            <li class="mb-2"><a href="">고객권리안내</a></li>
+                            <li class="mb-2"><a href="">이용약관</a></li>
+                            <li class="mb-2"><a href="">윤리경영</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inline-flex text-xs ">
+            <div class=" ">
+                <div class=" w-48 m-10 ">
+                    <p class="mb-2">&nbsp;</p>
+                    <ul class="text-neutral-600">
+                        <li class="mb-2"><a href="">업무위탁현황</a></li>
+                        <li class="mb-2"><a href="">인쇄모집</a></li>
+                        <li class="mb-2"><a href="">사이트맵</a></li>
+                        <li class="mb-2"><a href="">현대카드 SNS 패밀리 그룹사</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     
+<!-- #Dropdown(더보기) -->
+
+<!-- <style>
+    ul{
+        padding:0;
+        margin:0;
+        list-style-type: none;
+    }
+    .container{
+        /* border:1px dashed; */
+        position:relative;
+        /* inline-blosk: 필요한 만큼만 옆으로 배치 */
+        display: inline-block;
+    }
+    /* 부모 태그 display : none; 적용 이후 아래 태그를 display: block; 적용하기 */
+    .container:hover .content{
+        display: block;
+    }
+    button{
+        padding:0.5rem;
+        cursor:pointer;
+        background-color: rgb(247, 74, 74);
+        color:#fff;
+        border:none;
+    }
+    .content{
+        position: absolute;
+        width:200px;
+        /* h(bottom, top), required / v(right, left), required / blur / spread / color */
+        /* 수평(필수) / 수직(필수) / 흐림 / 퍼짐 / 색 __최소 2개 필요 */
+        /* bottom / right / blur / color, top / left / blur / color */
+        box-shadow: 1px 1px 3px rgb(236, 200, 200), -1px -1px 3px rgb(252, 220, 220);
+        display: none;
+    }
+    ul li{
+        padding:0.5rem;
+    }
+    ul li:hover{
+        background-color: red;
+    }
+</style>
+
+<h1>Dropdown</h1>
+
+<div class="container">
+    <button type="button">Dropdown</button>
+    <div class="content">
+        <ul>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+        </ul>
+    </div>
+</div> -->
+
+
+<!-- #Modal -->
+
+<!-- <style>
+    .container{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .item{
+        background-color: #fff;
+        width:400px;
+        padding:1rem;
+        box-sizing:border-box;
+        position:relative;
+    }
+    .btn{
+        position:absolute;
+        top:-3rem;
+        right:0;
+        padding:0.5rem;
+        font-size: 2rem;
+    }
+
+</style>
+
+
+<h1>Heading</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime perspiciatis reprehenderit, eius et ipsum cumque voluptatibus. Ea, expedita dolorum, provident repellat exercitationem veniam nesciunt aliquam, quaerat deleniti asperiores repudiandae porro?</p>
+
+<div class="container">
+        <div class="item">
+                <span class="btn">&times;</span>
+                    <h1>Modal Content</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime perspiciatis reprehenderit, eius et ipsum cumque voluptatibus. Ea, expedita dolorum, provident repellat exercitationem veniam nesciunt aliquam, quaerat deleniti asperiores repudiandae porro?</p>
+        </div>
+</div> -->
+
+
+<!-- #Navigation (메뉴) -->
+
+<!-- <style>
+    ul{
+        list-style-type: none;
+        padding:0;
+        margin:0;
+    }
+    .container{
+        border:1px dashed;
+        background-color: #222;
+    }
+    ul{
+        display: flex;
+    }
+    a{
+        display:block;
+        /* padding 값 지정 > 클릭할 수 있는 영역이 커진다 */
+        padding:0.5rem;
+        color:#fff;
+    }
+    a:hover{
+        background-color: rgb(172, 172, 172);
+    }
+</style>
+
+
+
+<div class="container">
+    <ul>
+        <li>
+            <a href="#">Menu</a>
+        </li>
+        <li>
+            <a href="#">Menu</a>
+        </li>
+        <li>
+            <a href="#">Menu</a>
+        </li>
+        <li>
+            <a href="#">Menu</a>
+        </li>
+    </ul>
+</div> -->
+
+
+<!-- <style>
+ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+.container{
+    border:1px dashed;
+    background-color: rgb(145, 233, 30);
+}
+ul{
+    display: flex;
+    /* flex item을 열방향으로 배치 (기본값 : 행방향 > row) */
+    flex-direction: column;
+}
+a{
+    /* display: block; 안하면 텍스트만 클릭할 수 있다 */
+    display:block;
+    /* padding 값 지정 > 클릭할 수 있는 영역이 커진다 */
+    padding:0.5rem;
+    color:#fff;
+    text-align: center;
+}
+a:hover{
+    background-color: rgb(172, 172, 172);
+}
+@media(min-width:640px) {
+    ul{
+        flex-direction: row;
+    }
+}
+</style>
+
+
+
+<div class="container">
+<ul>
+    <li>
+        <a href="#">Menu</a>
+    </li>
+    <li>
+        <a href="#">Menu</a>
+    </li>
+    <li>
+        <a href="#">Menu</a>
+    </li>
+    <li>
+        <a href="#">Menu</a>
+    </li>
+</ul>
+</div> -->
+
+
+<style>
+    ul{
+        /* 목록 앞의 마커 설정 > none : 없애기 */
+        list-style-type: none;
+        padding:0;
+        margin:0;
+    }
+    .wrap{
+        border:1px dashed;
+    }
+    ul{
+        display: flex;
+        background-color: beige;
+    }
+    a{
+        /* text-decoration: none; > 밑줄 없애기 */
+        text-decoration: none;
+    }
+    li > a{
+        display: block;
+        padding:0.5rem;
+        color:red;
+    }
+    .container{
+        /* border:1px dashed; */
+    }
+    .container:hover .content{
+        display: block;
+    }
+    .container:hover .btn span{
+        transform: rotate(180deg);
+    }
+    .btn span{
+        font-size: 0.5rem;
+        vertical-align: middle;
+        transform: rotate(0);
+        /* inline-block 해야 transform : rotate가 적용된다. > 클릭했을 때 방향이 바뀌는 것(자바)과는 다른 것  */
+        display: inline-block;
+        /* 변형되는 시간 (애니메이션) */
+        transition: 0.5s;
+    }
+    .btn{
+        height:100%;
+        border:none;
+        font-size: 1rem;
+        background-color: beige;
+        color:red;
+        cursor: pointer;
+    }
+    .btn:hover{
+        background-color: #333;
+    }
+    .content{
+        border:1px solid #ddd;
+        position: absolute;
+        width:200px;
+        display: none;
+    }
+    .content a{
+        display: block;
+        padding:0.5rem;
+        color:red;
+    }
+    li > a:hover{
+        background-color: #333;
+    }
+    .content a:hover{
+        background-color: #eee;
+    }
+</style>
+
+<div class="wrap">
+    <ul>
+        <li>
+            <a href="#">Menu</a>
+        </li>
+        <li>
+            <a href="#">Menu</a>
+        </li>
+        <li class="container">
+            <button class="btn">Dropdown <span>&#9660;</span></button>
+            <div class="content">
+                <a href="#">Menu</a>
+                <a href="#">Menu</a>
+                <a href="#">Menu</a>
+            </div>
+        </li>
+        
+
+    </ul>
+
+</div>
+
+<!-- <style>
+    body{
+        height:1000px;
+    }
+    .container{
+        border:1px dashed;
+        position:fixed;
+        width:200px;
+        top:0;
+        left:0;
+        bottom:0;
+        background-color: #222;
+    }
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding:0;
+    }
+    a{
+        display: block;
+        color:#fff;
+        padding:0.75rem;
+    }
+    a:hover{
+        background-color: #333;
+    }
+    .wrap{
+        margin-left: 200px;
+        height:100%;
+    }
+</style>
+
+
+<div class="container">
+    <ul>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Menu</a></li>   
+        <li><a href="#">Menue</a></li>
+    </ul>
+</div>
+
+<div class="wrap">
+    <h1>Heading</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, error nostrum. Fuga dolore ea sapiente dolores? Quo nobis deleniti officia consequuntur nisi dolore ipsa perspiciatis molestias, libero ex error voluptates!</p>
+</div> -->
+
+<!-- <style>
+    .container{
+        border:1px dashed;
+        position:fixed;
+        width:4rem;
+        top:0;
+        left:0;
+        height: 1000px;
+        background-color: #222;
+    }
+    .scroll{
+        overflow-y:scroll;
+    }
+    ul{
+        list-style-type: none;
+        margin:0;
+        padding:0;
+    }
+    a{
+        display:block;
+        padding:1rem;
+        text-align: center;
+        border-bottom: 1px solid #333;
+        color:antiquewhite;
+    }
+    a:hover{
+        background-color: #333;
+    }
+</style>
+
+<div class="container">
+    <div class="scroll">
+        <ul>
+            <li><a href="#">#</a></li>
+            <li><a href="#">#</a></li>
+            <li><a href="#">#</a></li>
+            <li><a href="#">#</a></li>
+        </ul>
+    </div>
+</div> -->
+
+
+<!-- <style>
+    body{
+        height:1000px;
+    }
+    .container{
+        border:1px dashed;
+        /* 스크롤 설정 위해서는 position:fixed; 해야한다 */
+        position:fixed;
+        width:200px;
+        top:0;
+        left:0;
+        bottom:0;
+        background-color: #222;
+        overflow-y: scroll;
+    }
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding:0;
+        height: 1000px;
+    }
+    a{
+        display: block;
+        color:#fff;
+        padding:0.75rem;
+    }
+    a:hover{
+        background-color: #333;
+    }
+    .wrap{
+        margin-left: 200px;
+        height:100%;
+    }
+</style>
+
+
+<div class="container">
+    <ul>
+        <li><a href="#">Menue</a></li>
+        <li><a href="#">Menue</a></li>
+        <li><a href="#">Menue</a></li>   
+        <li><a href="#">Menue</a></li>
+    </ul>
+</div> -->
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+// #Form 다루기
+
+function App(){
+  const [username, setUsername]=useState("")
+
+  function handleSubmit(e){
+    e.preventDefault();
+    console.log("username:",username)
+    setUsername("") //설정하면 로그인 submit click 이후 input의 value가 빈 문자열로 된다.
+  }
+
+  function handleChange(e){
+    const value=e.target.value;
+    const username=value.trim();
+
+    setUsername(username) //현재 함수 내에서 선언한 username
+
+    // console.log(username)
+    // console.log(value)
+
+    // console.log(!"") //true (빈 문자열에 not이 붙으면 true)
+    // console.log(!"foo")  //false (문자열에 not이 붙으면 false)
+  }
+
+  return(
+    <form onSubmit={handleSubmit}>
+      <h1>로그인</h1>
+      <input 
+      type="text"
+      placeholder="Username"
+      // onClick 아니고 onChange
+      onChange={handleChange}
+      value={username}    //setState의 이름과 같게 설정한다.
+      />
+      <button
+      type="submit"
+      disabled={!username}   //버튼을 누를 수 없는 상태 = username이 빈문자열
+      // 또는
+      // disabled={username===""}
+      >
+        로그인
+      </button>
+    </form>
+  )
+}
+
+==##Q.Password toggle
+
+function App(){
+  // 변하는 것을 선언한다.
+  const [type, setType]=useState("password")
+  
+  function handleSubmit(e){
+    e.preventDefault();
+  }
+
+  function handleClick(){
+    if(type==="password"){
+      setType("text")
+    }else{
+      setType("password")
+    }
+
+  }

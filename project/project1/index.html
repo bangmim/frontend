@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body style="min-height: 2000px;">
+
+    <!-- NAVIGATION -->
+    <div class="fixed top-0 w-full z-10">
+        <!-- main image > relative 속성이 우선 적용되어 fixed 된 navigation bar 표시 안 됨 -->
+        <!-- z-index 설정해야 navigation bar 표시 됨. (음수 가능) -->
+        <div class="flex border-b bg-white">
+            <a href="#" class="p-2 hover:bg-gray-100">MENU</a>
+            <a href="#" class="p-2 hover:bg-gray-100">MENU</a>
+            <a href="#" class="p-2 hover:bg-gray-100">MENU</a>
+            <a href="#" class="p-2 hover:bg-gray-100">MENU</a>
+        </div>
+    </div>
+    <!-- MAIN IMAGE -->
+    <div class="h-96 bg-gradient-to-r from-cyan-500 to-blue-500 relative">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <h1 class="text-3xl">Heading</h1>
+        </div>
+    </div>
+    <!-- ABOUT -->
+    <div class="bg-gray-100  py-10">
+        <h1 class="text-3xl text-center mb-5">Heading</h1>
+        
+        <div class="flex flex-col md:flex-row gap-5 max-w-3xl mx-auto">
+            <div class="flex flex-col items-center">
+                <div class="w-40 h-40 border border-black mb-3 rounded-full overflow-hidden"></div>
+                <div class="text-center">
+                    <h3 class="text-xl">Heading</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-40 h-40 border border-black mb-3 rounded-full overflow-hidden"></div>
+                <div class="text-center">
+                    <h3 class="text-xl">Heading</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-40 h-40 border border-black mb-3 rounded-full overflow-hidden"></div>
+                <div class="text-center">
+                    <h3 class="text-xl">Heading</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    
+    <!-- CONTENT -->
+    <div class="py-10">
+        <h1 class="text-3xl text-center mb-5">Heading</h1>
+        <div class="max-w-3xl px-2 flex gap-4 flex-col md:flex-row mx-auto">
+            <div class="w-full h-64 border border-black"></div>
+            <div class="w-full h-64 border border-black"></div>
+        </div>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="bg-gray-100 py-10">
+        <div class="flex gap-5 max-w-3xl px-2 flex-col md:flex-row mx-auto">
+
+            <div class="w-40 h-40 border border-black shrink-0 mx-auto rounded-full overflow-hidden"></div>
+            <!-- 자동으로 아이템 너비가 축소되지 않도록 하려면 반드시 "flex-shrink: 0;"을 아이템에 선언 -->
+
+            <div class="flex items-center grow">
+                <div class="">
+                    <p class="">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus asperiores, dolorum inventore ut ducimus ab temporibus placeat nostrum vero id fugit praesentium corrupti officiis. Magni mollitia quos cumque at molestiae?</p>
+                    <p>-Doe, John</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="py-10">
+        <h1 class="text-3xl text-center mb-5">Heading</h1>
+        <div class="flex gap-5 max-w-3xl mx-auto px-2 flex-col md:flex-row">
+
+            <div class="w-full h-64 border border-black"></div>
+
+            <div class="w-full">
+                <form action="">
+                    <div class="mb-2">
+                        <label for="name"></label>
+                        <input type="text" class="border p-2 w-full" id="name" placeholder="Name">
+                    </div>
+                    <div class="mb-2">
+                        <label for="email"></label>
+                        <input type="text" class="border p-2 w-full" id="email" placeholder="E-Mail">
+                    </div>
+                    <div class="mb-2">
+                        <label for="message"></label>
+                        <textarea name="" id="message" cols="30" rows="5" class="border w-full p-2" placeholder="Message"></textarea>
+                    </div>
+                    <button type="submit" class="p-2 bg-black text-white" >Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="bg-gray-100 py-10">
+        <div class="max-w-3xl px-3 mx-auto">
+            <div class="flex flex-wrap w-90 border">
+                
+                <!-- flex-wrap 속성이 적용되어 flex-basis 적용할 수 있음. -->
+                <div class="basis-full p-3">
+                    <h3 class="text-xl mb-2">Heading</h3>
+                    <ul>
+                        <li><a href="">Link</a></li>
+                        <li><a href="">Link</a></li>
+                        <li><a href="">Link</a></li>
+                    </ul>
+                </div>
+
+                <div class="basis-full md:basis-1/2 p-3">
+                    <h3 class="text-xl mb-2">Heading</h3>
+                    <ul>
+                        <li><a href="">Link</a></li>
+                        <li><a href="">Link</a></li>
+                        <li><a href="">Link</a></li>
+                    </ul>
+                </div>
+
+                <div class="basis-full md:basis-1/2 p-3">
+                    <h3 class="text-xl mb-2">Heading</h3>
+                    <ul>
+                        <li><a href="">Link</a></li>
+                        <li><a href="">Link</a></li>
+                        <li><a href="">Link</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center border-t border-black">
+                <h3 class="text-sm py-2">Footer</h3>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+html:5 = ! + enter
+============================================================================
+https://tailwindcss.com/docs/installation/play-cdn
+head > <script src="https://cdn.tailwindcss.com"></script>  붙여넣기
+==========tailwindcss 사용 준비 완료
+
+플렉스박스 아이템의 기본 너비를 자동으로 늘어나거나(flex-grow) 줄어들도록(flex-shrink) 해서 행 안에 적절한 너비로 배치되도록 맞추는 기능
+
+flex-grow : flex의 남은 부분이 없어지도록 item을 늘림
+
+주석으로 만들어야할 메뉴 쓰기
+
+form
+label > input
+message > textrea

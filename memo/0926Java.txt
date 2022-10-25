@@ -1,0 +1,86 @@
+fetchData라는 비동기 함수 만들기
+서버에 데이터를 요청하는 함수이다.
+
+(1) function fetchData(){
+    const o={foo:"bar"}
+    return o;
+}
+
+(2) function fetchData(callback) {
+     const o ={foo : "bar"};
+
+setTimeout(callback, ms) : ms 후에 callback 실행
+     setTimeout( ()=>{
+        callback(o)
+     }, 1000)
+}
+
+// // 데이터를 가져오는데 1초가 걸린다고 가정
+// fetchData(data =>{
+//     console.log("data", data)
+// })
+
+// console.log("다른작업")
+
+// -----------------------------------
+// 비동기에서 에러 다루기
+
+// function fetchData(id, callback){
+    //callback 함수가 err일 때
+//     if (!id) {             
+//         const err = new Error("id is required");
+
+//         setTimeout( ()=>{
+//             callback(err, null)
+//         }, 0)
+//         return;
+//     }
+    //callback 함수가 data일 때
+//     const o={foo:"bar"}
+
+//     setTimeout(() => {
+//         callback(null,o)
+//     })
+// }# callback
+
+// // fetchData() 함수 호출
+// fetchData(4, (err,data)=>{
+//     if (err){
+//         throw err;
+//     }
+//     console.log("data",data)
+// })
+
+-----------------------
+# Callback
+// 다른 함수의 인자가 되는 함수
+
+// function f1(callback) {
+     var r= callback() // f1 함수의 내부에서 실행된다
+     console.log(r)
+// }
+
+// function f2() {
+//     return "foo"
+// }
+
+// // 호출
+// f1(f2); //f2는 f1의 callback이다. f(f(2)) > 잘못된 방법
+
+// function f1(callback) {
+//     var r = callback()
+//     console.log(r)
+// }
+
+// f1(function() { // 익명함수가 callback일 때
+//     return "foo"
+// })
+
+// function f1(callback) {
+//     var r = callback()
+//     console.log(r)
+// }
+
+// f1(function (){ 
+//     return f2()  //익명함수로 호출할 때 (익명함수가 callback이다 )
+// })

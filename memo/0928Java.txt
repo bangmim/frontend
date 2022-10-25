@@ -1,0 +1,83 @@
+BOM: Browser Objesct Model
+DOM: Document Objesct Model
+
+
+    Browser Object   // 웹 개발의 시작   //page1 = window Object
+        // console.log(window);
+
+        // window Object의 속성과 메서드는 웹개발에 필요한 툴키트이다.
+        // console.log(window.navigator.geolocation)   //접속한 브라우저의 위치를 알려준다.
+        // console.log(window.screen)      //접속한 유저의 디바이스의 화면 정보
+        // console.log(window.location)     //현재 접속한 웹페이지의 정보 (URL등)
+        // console.log(window.history)     //유저의 웹브라우징에 관한 기록 등
+        // console.log(XMLHttpRequest)     //AJAX 요청 (서버에 데이터를 요청하는 방법)
+
+        // Document Object
+        console.log(window.document)
+=================================================================
+##태그이름으로 선택하기</p>
+    <ul>
+        <li>foo</li>
+        <li>bar</li>
+        <li>baz</li>
+    </ul>
+
+<script>
+querySelector(태그이름) : 태그이름으로 element를 선택한다.
+        const ul=document.querySelector("ul");
+querySelectorALL(태그이름) : 태그이름을 가진 모든 element를 선택한다. 
+        const li=document.querySelectorAll("li");
+    </script>
+
+
+##id, class로 선택하기 (1)
+<ul>
+        <li id="foo" class="item">foo</li>
+        <li class="item">bar</li>
+        <li class="item">baz</li>
+</ul>
+
+    <script>
+getElementByID(id) : id를 가진 element를 선택한다
+        const foo = document.getElementById("foo");
+        console.log(foo);
+
+getElementsByClassName(class) : class를 가진 element를 모두 선택한다
+        const items = document.getElementsByClassName("item");
+    </script>
+
+##id, class로 선택하기 (2)
+
+    <ul>
+        <li id="foo" class="item">foo</li>
+        <li class="item">bar</li>
+        <li class="baz">baz</li>
+    </ul>
+
+    <script>
+querySelector(#id) : id를 가진 element를 선택한다
+        const foo = document.querySelector("#foo");
+        console.log(foo)
+
+        const baz = document.querySelector(".baz");
+        console.log(baz)
+
+queruSelectorAll(".item")
+        const items=document.querySelectorAll(".item");
+        console.log(items)  //NodeList    (HTMLCollection과 유사하다)
+    </script>
+
+
+##자식 선택자
+    <ul>
+        <li id="foo" class="item">foo</li>
+        <li class="item">bar</li>
+        <li class="baz">baz</li>
+    </ul>
+
+console.log(ul.children);   //HTML Collection : index, length       //array는 아니지만 공통점이 있다.
+console.log(ul.children[2]); 
+console.log(ul.children.length);
+
+console.log(ul.firstElementChild)   //대소문자
+console.log(ul.lastElementChild)   
