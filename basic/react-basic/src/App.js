@@ -1317,3 +1317,242 @@ export default App;
 //   )
 // }
 
+// ==##1026
+
+// function App(){
+//   const [beers,setBeers]=useState([])
+
+//   // 검색하는 부분
+//   function handleChange(e){
+//     const name=e.target.value
+//     // console.log(name)
+
+//     if(!name){
+//       setBeers([]);
+//       return;       //return 아래로 실행되지 않음.
+//     }
+
+//     const DATA=[
+//       {id:"b1",name:"Heineken"},
+//       {id:"b2",name:"Guinness"},
+//       {id:"b3",name:"Kloud"},
+//       {id:"b4",name:"KGB"},
+//       {id:"b5",name:"Asahi"},
+//     ]
+
+//     // arr.filter(f(arr){
+//     //   return Array;
+//     // })
+//     // 화살표 함수 > arr.filter(arr=>{
+//     //   return Array;
+//     // })
+
+//     const updateBeers=DATA.filter(beer=>{
+//       // String.startsWith(p) : String이 p로 시작하면 true, 아니면 false를 return한다.
+//       if(beer.name.startsWith(name)){
+//         return beer;
+//       }
+//     })
+
+//     console.log(updateBeers)
+
+//     setBeers(updateBeers)
+//   }
+
+//   const beerList=beers.map((beer,index)=>(
+//     <li key={index}>{beer.name}</li>
+//   ))
+
+//   return(
+//     <>
+//     <h1>Live Search</h1>
+//     <input 
+//     type="text"
+//     onChange={handleChange}
+//     placeholder="Search"
+//     />
+
+   
+//     <ul>
+//       {beerList}
+//     </ul>
+//     </>
+//   )
+// }
+
+// Beer form : create
+
+// const initialBeers=[
+//   {id:"b1",name:"Heineken"},
+// ]
+
+// function App(){
+//   const [beers, setBeers]=useState(initialBeers)
+//   const [name, setName]=useState("");
+
+
+//   function handleSubmit(e){
+//     e.preventDefault();
+  
+//     console.log("name:",name);
+
+//     // 형식을 일치시켜주어야 한다. (key와 value가 같으면 하나로 생략이 된다.)
+//     const newBeer={id:Math.random(),name:name};
+//     console.log(newBeer)
+
+//     console.log(beers)
+//     // beers에 newBeer를 추가한다.
+//     const updateBeers=[...beers,newBeer]
+//     console.log(updateBeers)
+
+//     // beers state를 업데이트 한다.
+
+//     setBeers(updateBeers)
+//     // form 제출(submit)하고 마지막에 빈문자열로 만든다.(초기화)
+//     setName("")
+//   }
+
+//   function handleChange(e){
+//     const name=e.target.value
+//     setName(name)
+    
+//     // console.log(name)
+//   }
+
+//   const beerList=beers.map(beer=>(
+//     <li key={beer.id}>
+//       {beer.name}
+//       </li>
+//   ))
+
+//   return(
+//     <>
+//     <h1>Beers</h1>
+//     <form onSubmit={handleSubmit}>
+//     <input
+//     type="text"
+//     placeholder="Guinness"
+//     onChange={handleChange}
+//     value={name}
+//     />
+//     <button
+//     type="submit"
+//     disabled={!name}
+//     >
+//       Add
+//     </button>
+//     </form>
+
+//     <ul>
+//       {beerList}
+//     </ul>
+//     </>
+//   )
+
+// }
+
+// #Delete
+
+// const initialBeers=[
+//   {id:"b1",name:"Heineken"},
+//   {id:"b2",name:"Guinness"},
+//   {id:"b3",name:"Kloud"}
+// ]
+
+// function App(){
+//   // const[array이름, 최종array이름]=useStatae(초기array이름)
+//   const [beers, setBeers]=useState(initialBeers);
+  
+//   function deleteBeer(beerId){
+
+//     console.log(beerId)
+//     const updatedBeers=beers.filter(beer=>{
+//       if(beer.id !==beerId){
+//         return beer   //id가 다른 array들만 출력 (click한 id만 빼고 나머지 array가 출력됨 > delete 효과)
+//       }
+//     })
+//     setBeers(updatedBeers)    //최종 array
+//   }
+  
+//   const beerList=beers.map(beer=>(
+//     <li key={beer.id}>
+//       {beer.name} {" "}
+//       <button onClick={()=>deleteBeer(beer.id)}>Delete</button>
+//     </li>
+//   ))
+
+//   return(
+//     <>
+//     <h1>Beers</h1>
+//     <form>
+//       <input
+//       type="text"
+//       placeholder="Guinness"
+//       disabled={true} 
+//       />
+//       <button
+//       type="submit"
+//       disabled={true}>
+//         Add
+//       </button>
+//     </form>
+//     <ul>
+//       {beerList}
+//     </ul>
+//     </>
+//   )
+// }
+
+// #update
+
+const initialBeers=[
+  {id:"b1",name:"Heineken",available:true},
+  {id:"b2",name:"Guinness",available:false},
+  {id:"b3",name:"Kloud",available:true}
+]
+
+function App(){
+  const [beers,setBeers]=useState(initialBeers)
+
+  function editBeer(beerId){
+    const updatedBeers=beers.map(beer=>{
+      if(beer.id===beerId){
+          return !beer.available
+      }else{
+        return beer
+      } 
+    })
+    console.log(updatedBeers)
+    setBeers(updatedBeers)
+  }
+  
+  const beerList=beers.map(beer=>(
+    <li key={beer.id}>
+      {beer.name} {" "}
+      <button onClick={()=>editBeer(beer.id)}>
+        {beer.available ? "판매중":"품절"}
+      </button>
+    </li>
+  ))
+  return(
+    <>
+    <h1>Beers</h1>
+    <form>
+      <input
+      type="text"
+      placeholder="Guinness"
+      disabled={true}
+      />
+      <button
+      type="submit"
+      disabled={true}
+      >
+        Add
+      </button>
+    </form>
+    <ul>
+      {beerList}
+    </ul>
+    </>
+  )
+}
