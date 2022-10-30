@@ -1,0 +1,19 @@
+ function editBeer(beerId){
+const editedBeers=beers.map(beer=>{
+if(beer.id===beerId){
+
+// list update : {나버지 list + 변경할 key값:변경할 value값}
+return {...beer, available:!beer.available}
+}
+return beer
+})
+
+
+// 출력할 결과물에 따라 중괄호 또는 소괄호가 된다.
+
+//list 출력이므로 중괄호 아닌 소괄호 .map(변수=>중괄호 아닌 소괄호로 ())
+const beerList=beers.map(beer=>(
+  <li key={beer.id}>
+    {beer.name}
+  </li>
+))

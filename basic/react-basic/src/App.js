@@ -1397,6 +1397,7 @@ export default App;
 //     console.log("name:",name);
 
 //     // 형식을 일치시켜주어야 한다. (key와 value가 같으면 하나로 생략이 된다.)
+//     //name > useState의 name과 일치
 //     const newBeer={id:Math.random(),name:name};
 //     console.log(newBeer)
 
@@ -1406,9 +1407,9 @@ export default App;
 //     console.log(updateBeers)
 
 //     // beers state를 업데이트 한다.
-
 //     setBeers(updateBeers)
-//     // form 제출(submit)하고 마지막에 빈문자열로 만든다.(초기화)
+
+//     // form 제출(submit)하고 마지막에 input을 빈문자열로 비운다.(초기화)
 //     setName("")
 //   }
 
@@ -1505,54 +1506,261 @@ export default App;
 
 // #update
 
+// const initialBeers=[
+//   {id:"b1",name:"Heineken",available:true},
+//   {id:"b2",name:"Guinness",available:false},
+//   {id:"b3",name:"Kloud",available:true}
+// ]
+
+// function App(){
+//   const [beers,setBeers]=useState(initialBeers)
+
+//   function editBeer(beerId){
+//     const editedBeers=beers.map(beer=>{
+//       if(beer.id===beerId){
+//         // list update : {나머지 list + 변경할 key값:변경할 value값}
+//           return {...beer, available:!beer.available}
+//       }
+//       return beer
+//     })
+//     console.log(editedBeers)
+//     setBeers(editedBeers)
+//   }
+  
+//   const beerList=beers.map(beer=>(
+//     <li key={beer.id}>
+//       {beer.name} {" "}
+//       <button onClick={()=>editBeer(beer.id)}>
+//         {beer.available ? "판매중":"품절"}
+//       </button>
+//     </li>
+//   ))
+//   return(
+//     <>
+//     <h1>Beers</h1>
+//     <form>
+//       <input
+//       type="text"
+//       placeholder="Guinness"
+//       disabled={true}
+//       />
+//       <button
+//       type="submit"
+//       disabled={true}
+//       >
+//         Add
+//       </button>
+//     </form>
+//     <ul>
+//       {beerList}
+//     </ul>
+//     </>
+//   )
+// }
+
+// #1028
+//  합쳐보기
+
+// const initialBeers=[
+//   {id:"b1",name:"Heineken",available:true},
+//   {id:"b2",name:"Guinness",available:false},
+//   {id:"b3",name:"Kloud",available:true},
+// ]
+
+// function App(){
+
+// //create
+// const [beers, setBeers]=useState(initialBeers);
+
+// const [name, setName]=useState("")
+
+// function handleChange(e){
+//   const name=e.target.value;
+//   setName(name)
+// }
+
+// function handleSubmit(e){
+//   e.preventDefault();
+
+//   console.log("name:",name)
+//   const newBeer={id:Math.random(),name:name, available:true}
+//   const updateBeers=[...beers, newBeer]
+//   setBeers(updateBeers)
+//   setName("")
+// }
+
+// // delete
+// function deleteBeer(beerId){
+//   const deleteBeer=beers.filter(beer=>{
+//     if (beer.id!==beerId){
+//       return beer
+//     }
+//   })
+//   setBeers(deleteBeer)
+// }
+
+// // update
+// function editBeers(beerId){
+//   const editedBeer=beers.map(beer=>{
+//     if(beer.id===beerId){
+//       return {...beer, available:!beer.available}
+//     }
+//     return beer
+//     // console.log("available:",beer.available)
+//   })
+//   console.log(editedBeer)
+//   setBeers(editedBeer)
+// }
+
+// const beerList=beers.map(beer=>(
+//   <li key={beer.id}>
+//     {beer.name} {" "}
+//     <button
+//     onClick={()=>deleteBeer(beer.id)}
+//     >Delete</button>
+//     <button
+//     onClick={()=>editBeers(beer.id)}
+//     >{beer.available?"판매중":"품절"}</button>
+//   </li>
+// ))
+
+// return(
+//   <>
+//   <h1>Beers</h1>
+//   <form onSubmit={handleSubmit}>
+//     <input
+//     type="text"
+//     placeholder="Guinness"
+//     onChange={handleChange}
+//     value={name}
+//     />
+//     <button
+//     type="submit"
+//     disabled={!name}
+//     >
+//       Add
+//     </button>
+//   </form>
+//   <ul>
+//     {beerList}
+//   </ul>
+//   </>
+// )
+// }
+
+// App과 Form 분리
+
 const initialBeers=[
-  {id:"b1",name:"Heineken",available:true},
-  {id:"b2",name:"Guinness",available:false},
-  {id:"b3",name:"Kloud",available:true}
-]
+    {id:"b1",name:"Heineken",available:true},
+    {id:"b2",name:"Guinness",available:false},
+    {id:"b3",name:"Kloud",available:true},
+  ]
 
 function App(){
-  const [beers,setBeers]=useState(initialBeers)
 
-  function editBeer(beerId){
-    const updatedBeers=beers.map(beer=>{
-      if(beer.id===beerId){
-          return !beer.available
-      }else{
-        return beer
-      } 
-    })
-    console.log(updatedBeers)
-    setBeers(updatedBeers)
+  const [beers, setBeers]=useState(initialBeers)
+
+  //beers (state) 업데이트 : 추가
+  function addBeer(name){
+    const newBeer={id:Math.random(),name:name, available:true}
+
+    const updateBeers=[...beers, newBeer]
+ 
+    setBeers(updateBeers)
   }
   
+
+  //beers (state) 업데이트 : 삭제
+  function deleteBeer(beerId){
+    const deleteBeer=beers.filter(beer=>{
+      if(beer.id!==beerId){
+        return beer;
+      }
+    })
+    setBeers(deleteBeer)
+  }
+
+  //beers (state) 업데이트 : 편집
+  function editBeer(beerId){
+    const editBeers = beers.map(beer=>{
+      if(beer.id===beerId){
+        return {...beer,available:!beer.available}
+      }
+      return beer
+    })
+    setBeers(editBeers)
+  }
+
   const beerList=beers.map(beer=>(
-    <li key={beer.id}>
-      {beer.name} {" "}
-      <button onClick={()=>editBeer(beer.id)}>
-        {beer.available ? "판매중":"품절"}
-      </button>
-    </li>
+    <Beer 
+    key={beer.id} 
+    beer={beer}
+    editBeer={editBeer}
+    deleteBeer={deleteBeer}
+    />
   ))
+
   return(
     <>
     <h1>Beers</h1>
-    <form>
-      <input
-      type="text"
-      placeholder="Guinness"
-      disabled={true}
-      />
-      <button
-      type="submit"
-      disabled={true}
-      >
-        Add
-      </button>
-    </form>
-    <ul>
-      {beerList}
-    </ul>
+    <Form addBeer={addBeer}/>
+    {beerList}
     </>
   )
 }
+
+// 전달인자를 중괄호(object의 key값)로 묶어야한다.
+// function Form (props)
+function Form({addBeer}){
+  //name(state)
+
+  // Form(addBeer)로 할 경우
+  // const addBeer=props.addBeer
+  const [name, setName]=useState("")
+  
+  function handleSubmit(e){
+    e.preventDefault();
+    console.log(addBeer);
+    // addBeer함수 호출
+    addBeer(name);
+    setName("");
+    //setBeer(); 사용 불가
+    
+    // console.log("name:", name)
+  }
+
+  function handleChange(e){
+    // console.log(e.target.value)
+    const name=e.target.value
+    setName(name)
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input 
+      type="text"
+      placeholder="Guinness"
+      onChange={handleChange}
+      value={name}
+      />
+      <button type="submit" disabled={!name}>Add</button>
+    </form>
+  )
+}
+
+function Beer({beer, deleteBeer,editBeer}){
+  return( 
+  <li>
+    {beer.name}
+    <div>
+      <button onClick={()=>deleteBeer(beer.id)}>
+        Delete
+      </button>
+      <button onClick={()=>editBeer(beer.id)}>
+        {beer.available?"판매중":"품절"}
+      </button>
+    </div>
+  </li>
+  )
+}
+
