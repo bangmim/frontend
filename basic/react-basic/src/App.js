@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
+import {BrowserRouter as Router, Routes, Route, Link, Outlet, useParams, useNavigate} from 
+"react-router-dom"
 import './App.css';
 
 // function App(){
@@ -1650,117 +1652,375 @@ export default App;
 
 // App과 Form 분리
 
-const initialBeers=[
-    {id:"b1",name:"Heineken",available:true},
-    {id:"b2",name:"Guinness",available:false},
-    {id:"b3",name:"Kloud",available:true},
-  ]
+// const initialBeers=[
+//     {id:"b1",name:"Heineken",available:true},
+//     {id:"b2",name:"Guinness",available:false},
+//     {id:"b3",name:"Kloud",available:true},
+//   ]
 
-function App(){
+// function App(){
 
-  const [beers, setBeers]=useState(initialBeers)
+//   const [beers, setBeers]=useState(initialBeers)
 
-  //beers (state) 업데이트 : 추가
-  function addBeer(name){
-    const newBeer={id:Math.random(),name:name, available:true}
+//   //beers (state) 업데이트 : 추가
+//   function addBeer(name){
+//     const newBeer={id:Math.random(),name:name, available:true}
 
-    const updateBeers=[...beers, newBeer]
+//     const updateBeers=[...beers, newBeer]
  
-    setBeers(updateBeers)
-  }
+//     setBeers(updateBeers)
+//   }
   
 
-  //beers (state) 업데이트 : 삭제
-  function deleteBeer(beerId){
-    const deleteBeer=beers.filter(beer=>{
-      if(beer.id!==beerId){
-        return beer;
-      }
-    })
-    setBeers(deleteBeer)
-  }
+//   //beers (state) 업데이트 : 삭제
+//   function deleteBeer(beerId){
+//     const deleteBeer=beers.filter(beer=>{
+//       if(beer.id!==beerId){
+//         return beer;
+//       }
+//     })
+//     setBeers(deleteBeer)
+//   }
 
-  //beers (state) 업데이트 : 편집
-  function editBeer(beerId){
-    const editBeers = beers.map(beer=>{
-      if(beer.id===beerId){
-        return {...beer,available:!beer.available}
-      }
-      return beer
-    })
-    setBeers(editBeers)
-  }
+//   //beers (state) 업데이트 : 편집
+//   function editBeer(beerId){
+//     const editBeers = beers.map(beer=>{
+//       if(beer.id===beerId){
+//         return {...beer,available:!beer.available}
+//       }
+//       return beer
+//     })
+//     setBeers(editBeers)
+//   }
 
-  const beerList=beers.map(beer=>(
-    <Beer 
-    key={beer.id} 
-    beer={beer}
-    editBeer={editBeer}
-    deleteBeer={deleteBeer}
-    />
-  ))
+//   const beerList=beers.map(beer=>(
+//     <Beer 
+//     key={beer.id} 
+//     beer={beer}
+//     editBeer={editBeer}
+//     deleteBeer={deleteBeer}
+//     />
+//   ))
 
+//   return(
+//     <>
+//     <h1>Beers</h1>
+//     <Form addBeer={addBeer}/>
+//     {beerList}
+//     </>
+//   )
+// }
+
+// // 전달인자를 중괄호(object의 key값)로 묶어야한다.
+// // function Form (props)
+// function Form({addBeer}){
+//   //name(state)
+
+//   // Form(addBeer)로 할 경우
+//   // const addBeer=props.addBeer
+//   const [name, setName]=useState("")
+  
+//   function handleSubmit(e){
+//     e.preventDefault();
+//     console.log(addBeer);
+//     // addBeer함수 호출
+//     addBeer(name);
+//     setName("");
+//     //setBeer(); 사용 불가
+    
+//     // console.log("name:", name)
+//   }
+
+//   function handleChange(e){
+//     // console.log(e.target.value)
+//     const name=e.target.value
+//     setName(name)
+//   }
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <input 
+//       type="text"
+//       placeholder="Guinness"
+//       onChange={handleChange}
+//       value={name}
+//       />
+//       <button type="submit" disabled={!name}>Add</button>
+//     </form>
+//   )
+// }
+
+// function Beer({beer, deleteBeer,editBeer}){
+//   return( 
+//   <li>
+//     {beer.name}
+//     <div>
+//       <button onClick={()=>deleteBeer(beer.id)}>
+//         Delete
+//       </button>
+//       <button onClick={()=>editBeer(beer.id)}>
+//         {beer.available?"판매중":"품절"}
+//       </button>
+//     </div>
+//   </li>
+//   )
+// }
+
+// ==## 1031
+
+// function App(){
+//   const [active, setActive]=useState(false);
+
+//   const style={
+//     position:"fixed",
+//     bottom:"0",
+//     left:"0",
+//     width:"100%",
+//     // dynamic style
+//     maxHeight:active?"100px":"0",
+//     backgroundColor:"#eee",
+//     transition:"0.2s",
+//   }
+
+//   const drawer=(
+//     <div style={style} onClick={()=>setActive(false)}>
+//       <ul>
+//         <li>list item</li>
+//         <li>list item</li>
+//         <li>list item</li>
+//       </ul>
+//     </div>
+//   )
+
+//     return(
+//       <>
+//       <h1>Drawer</h1>
+//       <button
+//       onClick={()=>setActive(true)}
+//       >
+//         Button
+//       </button>
+//       {drawer}
+//       </>
+//     )
+// }
+
+// ==##Q. Side bar
+// function App(){
+//   const [active, setActive]=useState(false)
+
+//   // style 하나에서 클래스를 통해 여러개를 만들 수 있다. (따로 선언X)
+//   const style={
+
+//     sideBar:{
+//       position:"fixed",
+//       backgroundColor:"#fff",
+//       top:"0",
+//       // dynamic
+//       left:active?"0":"-200px",
+//       zIndex:"1",
+//       width:"200px",
+//       height:"100%",
+//       transition:"0.2s"
+//     },
+//     overlay:{
+//       position:"fixed",
+//       top:"0",
+//       left:"0",
+//       width:"100%",
+//       height:"100%",
+//       backgroundColor:"rgba(0 0 0 /0.2)",
+//       //dynamic
+//       display:active?"block":"none"      
+//     }
+//   }
+
+//   return(
+//     <>
+//     <h1>Navigation</h1>
+
+//     {/* Button */}
+//     <button
+//     onClick={()=>setActive(true)}>
+//       Button
+//     </button>
+    
+//     {/* Navigation */}
+//       <nav style={style.sideBar}>
+//         <ul>
+//         <li>list item</li>
+//         <li>list item</li>
+//         <li>list item</li>
+//         </ul>
+//       </nav>
+
+//       {/* Overlay */}
+//       <div 
+//       style={style.overlay} 
+//       onClick={()=>setActive(false)}>
+//       </div>
+//     </>
+//   )
+// }
+
+// function App(){
+//   const [index,setIndex]=useState(0);
+
+//   console.log(index)
+//   const images=["foo.jpg","bar.jpg","baz.jpg"];
+
+//   const container={
+//     width:"100px",
+//     height:"100px",
+//     backgroundColor:"#ddd",
+//     display:"inline-flex",
+//     // dynamic
+//     transform:`translateX(-${index*100}px)`,
+//     transtion:"0.2s"
+//   }
+
+//   const item={
+//     width:"100%",
+//     height:"100%",
+//     border:"1px dashed",
+//     flexShrink:"0",
+//     display:"flex",
+//     justifyContent:"center",
+//     alignItems:"center"
+//   }
+
+//   const list = images.map(image=>(
+//  // key값은 image > value
+//     <div key={image}  style={item}>
+//       {image}
+//     </div>
+//   ))
+
+//   return(
+//     <>
+//     <h1>Carousel</h1>
+
+//     {/* Image */}
+//     <div className="">
+//       <h3>Images</h3>
+//       <div className="container" style={container}>
+//         {list}
+//       </div>
+//     </div>
+
+//     {/* Naviagtion */}
+//     <div>
+//     <h3>Navigation</h3>
+//     <button
+//     onClick={()=>setIndex(index-1)}
+//     style={{visibility:index===0 &&"hidden"}}
+//     >
+//       Prev
+//     </button>
+//     <button
+//     onClick={()=>setIndex(index+1)}
+//     style={{visibility:index===2 &&"hidden"}}
+//     >
+//       Next
+//     </button>
+//     </div>
+
+//     {/* Indicator */}
+//     <div>
+//       <h3>Indicator</h3>
+//       <div>
+//         {images.map((image,dot)=>(
+//           <span
+//           key={dot}
+//           style={{color:dot===index&&"red"}}
+//           >
+//             *
+//           </span>
+//         ))}
+//       </div>
+//     </div>
+//     </>
+//   )
+// }
+
+// #Router
+
+// App에서 사용할 함수를 미리 만들어 둔다.
+
+function Home(){
+  return <h1>Home</h1>
+}
+
+function Posts(){
   return(
     <>
-    <h1>Beers</h1>
-    <Form addBeer={addBeer}/>
-    {beerList}
+    <h1>Posts</h1>
+    <ul>
+      <li>
+        {/* to : a태그와 유사하다 */}
+      <Link to="/post/p1">Post 1</Link>
+      </li>
+      <li>
+      <Link to="/post/p2">Post 2</Link>
+      </li>
+    </ul>
     </>
   )
 }
 
-// 전달인자를 중괄호(object의 key값)로 묶어야한다.
-// function Form (props)
-function Form({addBeer}){
-  //name(state)
-
-  // Form(addBeer)로 할 경우
-  // const addBeer=props.addBeer
-  const [name, setName]=useState("")
+function Post(){
+  // useParams():url로 전달된 parameter를 가지고 있는 객체를 return한다.
+  const params=useParams();
+  const postId=params.postId;
   
-  function handleSubmit(e){
-    e.preventDefault();
-    console.log(addBeer);
-    // addBeer함수 호출
-    addBeer(name);
-    setName("");
-    //setBeer(); 사용 불가
-    
-    // console.log("name:", name)
-  }
+  return(
+    <>
+    <h1>Post</h1>
+    <p>{postId}</p>
+    </>
+  )
+}
 
-  function handleChange(e){
-    // console.log(e.target.value)
-    const name=e.target.value
-    setName(name)
-  }
+function Contact(){
+  return <h1>Contact</h1>
+}
 
+function NotFound(){
+  return <h1>404 NotFound</h1>
+}
+
+function App(){
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-      type="text"
-      placeholder="Guinness"
-      onChange={handleChange}
-      value={name}
-      />
-      <button type="submit" disabled={!name}>Add</button>
-    </form>
+    // Router로 모두 감싼다 
+    // Navigation과 Routes로 크게 나뉜다.
+    <Router>
+      {/* Navigation */}
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/posts">Posts</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Routes */}
+      {/* children으로 Route만 사용할 수 있다. */}
+      <Routes>
+        {/* path:요청받은 url (경로) / element : 요청 url에 해당하는 컴포넌트 */}
+        <Route path="/" element={<Home/>}/>
+        <Route path="/posts" element={<Posts/>}/>
+        {/* /: (콜론) : 파라미터로 간주 */}
+        <Route path="/post/:postId" element={<Post/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        {/* NotFound:가장 마지막에 있어야한다. */}
+        <Route path="*" element={<NotFound/>}/>
+      </Routes>
+    </Router>
   )
 }
-
-function Beer({beer, deleteBeer,editBeer}){
-  return( 
-  <li>
-    {beer.name}
-    <div>
-      <button onClick={()=>deleteBeer(beer.id)}>
-        Delete
-      </button>
-      <button onClick={()=>editBeer(beer.id)}>
-        {beer.available?"판매중":"품절"}
-      </button>
-    </div>
-  </li>
-  )
-}
-
