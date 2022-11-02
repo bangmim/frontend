@@ -1,0 +1,35 @@
+
+function Post(){
+  // useParams():url로 전달된 parameter를 가지고 있는 객체를 return한다.
+  const params=useParams();
+  const postId=params.postId;
+  
+  return(
+    <>
+    <h1>Post</h1>
+    <p>{postId}</p>
+    </>
+  )
+}
+
+  {/* Link to="/url/url의 id" */}
+<Link to="/post/p3">Post1</Link>
+
+//
+# Promise
+Promise 객체는 비동기 작업의 성공/ 실패 여부와 그 결과값을 나타낸다.
+상태와 결과값을 가지고있다.
+비동기 작업의 가독성을 높이기 위해 사용된다.
+
+구조
+Promise class를 이용하여 인스턴스 만들기
+
+const o = new Promise((res,rej)=>{
+    // res:resolve(fullfilled)
+    // 비동기 작업의 성공
+    // res("foo")
+
+    // rej: rejected
+    // 비동기 작업의 실패
+    rej("bar")
+})

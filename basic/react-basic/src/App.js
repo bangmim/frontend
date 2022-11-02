@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from 'react';
 import {BrowserRouter as Router, Routes, Route, Link, Outlet, useParams, useNavigate} from 
 "react-router-dom"
 import './App.css';
@@ -1947,80 +1947,293 @@ export default App;
 
 // App에서 사용할 함수를 미리 만들어 둔다.
 
-function Home(){
-  return <h1>Home</h1>
-}
+// function Home(){
+//   return <h1>Home</h1>
+// }
 
-function Posts(){
-  return(
-    <>
-    <h1>Posts</h1>
-    <ul>
-      <li>
-        {/* to : a태그와 유사하다 */}
-      <Link to="/post/p1">Post 1</Link>
-      </li>
-      <li>
-      <Link to="/post/p2">Post 2</Link>
-      </li>
-    </ul>
-    </>
-  )
-}
+// function Posts(){
+//   return(
+//     <>
+//     <h1>Posts</h1>
+//     <ul>
+//       <li>
+//         {/* to : a태그와 유사하다 */}
+//       <Link to="/post/p1">Post 1</Link>
+//       </li>
+//       <li>
+//       <Link to="/post/p2">Post 2</Link>
+//       </li>
+//     </ul>
+//     </>
+//   )
+// }
 
-function Post(){
-  // useParams():url로 전달된 parameter를 가지고 있는 객체를 return한다.
-  const params=useParams();
-  const postId=params.postId;
+// function Post(){
+//   // useParams():url로 전달된 parameter를 가지고 있는 객체를 return한다.
+//   const params=useParams();
+//   const postId=params.postId;
   
-  return(
-    <>
-    <h1>Post</h1>
-    <p>{postId}</p>
-    </>
-  )
-}
+//   return(
+//     <>
+//     <h1>Post</h1>
+//     <p>{postId}</p>
+//     </>
+//   )
+// }
 
-function Contact(){
-  return <h1>Contact</h1>
-}
+// function Contact(){
+//   return <h1>Contact</h1>
+// }
 
-function NotFound(){
-  return <h1>404 NotFound</h1>
+// function NotFound(){
+//   return <h1>404 NotFound</h1>
+// }
+
+// function App(){
+//   return (
+//     // Router로 모두 감싼다 
+//     // Navigation과 Routes로 크게 나뉜다.
+//     <Router>
+//       {/* Navigation */}
+//       <nav>
+//         <ul>
+//           <li>
+//             <Link to="/">Home</Link>
+//           </li>
+//           <li>
+//             <Link to="/posts">Posts</Link>
+//           </li>
+//           <li>
+//             <Link to="/contact">Contact</Link>
+//           </li>
+//         </ul>
+//       </nav>
+
+//       {/* Routes */}
+//       {/* children으로 Route만 사용할 수 있다. */}
+//       <Routes>
+//         {/* path:요청받은 url (경로) / element : 요청 url에 해당하는 컴포넌트 */}
+//         <Route path="/" element={<Home/>}/>
+//         <Route path="/posts" element={<Posts/>}/>
+//         {/* /: (콜론) : 파라미터로 간주 */}
+//         <Route path="/post/:postId" element={<Post/>}/>
+//         <Route path="/contact" element={<Contact/>}/>
+//         {/* NotFound:가장 마지막에 있어야한다. */}
+//         <Route path="*" element={<NotFound/>}/>
+//       </Routes>
+//     </Router>
+//   )
+// }
+
+// ==## 1102
+
+// const AuthContext=createContext();
+
+// function AuthProvider({children}){
+//   // AuthProvider의 children은 user에 접근이 가능하다.
+//   const [user, setUser]=useState(null);
+
+//   function signIn(username){
+//     setUser(username)
+//   }
+
+//   function signOut(){
+//     setUser(null)
+//   }
+
+//   const value={user, signIn, signOut};
+
+//   return(
+//     // Context를 통해 인증을 구현한다.
+//     // value에 따라 접근할 수 있는 children이 다르다.
+//     <AuthContext.Provider value={value}>
+//       {children}
+//     </AuthContext.Provider>
+//   )
+// }
+
+// function Home(){
+//   return <h1>Home</h1>
+// }
+
+// function Posts(){
+//   return(
+//     <>
+//     <h1>Posts</h1>
+//     <ul>
+//       <li>
+//         {/* Link to="/url/url의 id" */}
+//         <Link to="/post/p1">Post1</Link>
+//       </li>
+//       <li>
+//         <Link to="/post/p2">Post2</Link>
+//       </li>
+//     </ul>
+//     </>
+//   )
+// }
+
+// function Post(){
+//   const auth=useContext(AuthContext);
+
+//   const params=useParams();
+//   const postId=params.postId;
+
+//   if(!auth.user){     //인증구현
+//     // 로그인 하지 않은 경우에 페이지를 볼 수 없음.
+//     return <p>Unauthorized</p>
+//   }
+
+//   return(
+//     <>
+//     <h1>Post</h1>
+//     <p>{postId}</p>
+//     </>
+//   )
+// }
+
+// function NotFound(){
+//   return <h1>404 NotFound</h1>
+// }
+
+// function Login(){
+//   const auth=useContext(AuthContext);
+//   const [username,setUsername]=useState("");
+
+//   function handleSubmit(e){
+//     e.preventDefault();
+    
+//     auth.signIn(username)
+//   }
+
+//   const loginTemplate=(
+//     <form onSubmit={handleSubmit}>
+//       <h1>Sign in</h1>
+//       <input type="text" onChange={(e)=>setUsername(e.target.value)}/>
+//       <button type="submit">Submit</button>
+//     </form>
+//   )
+
+//   const logoutTemplate=(
+//     <div>
+//       <h1>Sign out</h1>
+//       <p>{auth.user}</p>
+//       <button onClick={auth.signOut}>Submit</button>
+//     </div>
+//   )
+
+//   return auth.user?logoutTemplate : loginTemplate
+// }
+
+// function App(){
+//   return (
+//     <Router>
+//       <nav>
+//         <ul>
+//           <li>
+//             <Link to="/">Home</Link>
+//           </li>
+//           <li>
+//             <Link to="posts">Posts</Link>
+//           </li>
+//           <li>
+//             <Link to="login">Login</Link>
+//           </li>
+//         </ul>
+//       </nav>
+//       <AuthProvider>
+//         <Routes>
+//           <Route path="/" element={<Home/>}/>
+//           <Route path="posts" element={<Posts/>}/>
+//           <Route path="post/:postId" element={<Post/>}/>
+//           <Route path="login" element={<Login/>}/>
+//           <Route path="*" element={<NotFound/>}/>
+//         </Routes>
+//       </AuthProvider>
+
+//     </Router>
+//   )
+// }
+
+// # fetch data(데이터 요청하기)
+
+// function App(){
+//   const [count,setCount]=useState(0);
+
+//   // useEffect(Hook)
+//   // 비동기적으로 작동한다.
+
+//   // 사용방법
+//   // useEffect(callback) : 컴포넌트가 실행될 때마다 callback이 실행된다.
+//   // useEffect(callback, []) : 컴포넌트의 최초 실행시에만 callback이 실행된다.
+//   // useEffect(callback,[dep1,...]) : 컴포넌트의 최초 실행시, dependency가 업데이트 될 때마다 callback이 실행된다.
+  
+//   useEffect(()=>{
+//     // 렌더링이 처음(최초) 시작되었을 때 console에 출력된다.
+//     const time=new Date().toLocaleTimeString();
+//     console.log(time)
+//   }, [])
+
+//   // const time=new Date().toLocaleTimeString();
+//   // console.log(time)
+
+//   return(
+//     <>
+//     <h1>App</h1>
+//     <p>App이 {count}번 렌더링 되었습니다.</p>
+//     <button onClick={()=>setCount(count+1)}>Add</button>
+//     </>
+//   )
+// }
+
+// API 서버가 2초 뒤에 응답을 준다고 가정한다.
+function fakeApi(){
+  const beers=[
+    {id:"b1",name:"Heineken"},
+    {id:"b2",name:"Guinness"},
+    {id:"b3",name:"Asahi"},
+  ]
+
+  const promise=new Promise((res,rej)=>{
+    setTimeout(()=>{
+      res(beers)
+    },2000)
+  })
+
+  return promise;
 }
 
 function App(){
-  return (
-    // Router로 모두 감싼다 
-    // Navigation과 Routes로 크게 나뉜다.
-    <Router>
-      {/* Navigation */}
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/posts">Posts</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      </nav>
+  const [beers, setBeers]=useState(null);
+  const [error,setError]=useState(null);
+  const [isLoaded, setIsLoaded]=useState(false);
 
-      {/* Routes */}
-      {/* children으로 Route만 사용할 수 있다. */}
-      <Routes>
-        {/* path:요청받은 url (경로) / element : 요청 url에 해당하는 컴포넌트 */}
-        <Route path="/" element={<Home/>}/>
-        <Route path="/posts" element={<Posts/>}/>
-        {/* /: (콜론) : 파라미터로 간주 */}
-        <Route path="/post/:postId" element={<Post/>}/>
-        <Route path="/contact" element={<Contact/>}/>
-        {/* NotFound:가장 마지막에 있어야한다. */}
-        <Route path="*" element={<NotFound/>}/>
-      </Routes>
-    </Router>
-  )
+  useLayoutEffect(()=>{
+    fakeApi()
+    .then(data=>{
+      setBeers(data)
+    })
+    .catch(error=>{
+      setError(error)
+    })
+    .finally(()=>setIsLoaded(true))
+  },[])
+
+  if(error){
+    return <p>failed to fetch</p>
+  }
+  if(!isLoaded){    //!isLoaded : isLoaded가 false면
+    return <p>fetching data...</p>
+  }
+
+    return(
+      <>
+      <h1>Beers</h1>
+      <ul>
+        {beers.map(beer=>(
+          <li key={beer.id}>{beer.name}</li>
+        ))}
+      </ul>
+      </>
+    )
 }
