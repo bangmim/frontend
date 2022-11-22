@@ -80,11 +80,13 @@ color: white;
   width: 855px;
   height: 600px;
   overflow: auto;
+  /* overflow-x: scroll; */
   margin-bottom: 30px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-clip: content-box;
+  
 }
 
 .Table-back{
@@ -92,6 +94,7 @@ color: white;
   justify-content: center;
   margin-top: 50px;
 }
+
 .Table-Map{
   display:flex;
   margin-top: 50px;
@@ -100,6 +103,38 @@ color: white;
   text-align: center;
 }
 
+table{
+  display: block;
+  width: 100%;
+  min-width: 700px;
+  height:100%;
+  border-collapse:collapse;
+  table-layout: fixed;
+  margin:auto;
+}
+
+thead tr{
+  border-bottom: 1px solid;
+}
+
+th, td{
+  padding:0.5rem;
+}
+
+td p{
+  /* word-wrap: break-word; */
+  height:50px;
+  /* text-align: center; */
+  
+  word-break: keep-all;
+  padding-top:0.5rem;
+}
+
+/* nth-chile() doo(홀수), even(짝수) */
+tbody tr:nth-child(odd){
+  background-color: #f1f1f1;
+  
+}
 
 .flex{
   display: flex;
