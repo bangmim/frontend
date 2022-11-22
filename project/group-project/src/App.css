@@ -107,16 +107,17 @@ table{
   display: block;
   width: 100%;
   min-width: 700px;
-  height:100%;
+  height:auto;
   border-collapse:collapse;
   table-layout: fixed;
   margin:auto;
 }
 
-thead tr{
-  border-bottom: 1px solid;
+th{
+  position:sticky;
+  top:0;
+  background-color: #B2BABB;
 }
-
 th, td{
   padding:0.5rem;
 }
@@ -132,7 +133,7 @@ td p{
 
 /* nth-chile() doo(홀수), even(짝수) */
 tbody tr:nth-child(odd){
-  background-color: #f1f1f1;
+  background-color: #F2F3F4;
   
 }
 
