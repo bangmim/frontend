@@ -45,7 +45,7 @@ const favoriteCommentSchema=new Schema({
 })
 
 //exports : 다른파일에서 import하면 사용할 수 있다.
-exports.User=mongoos.model('User',userSchema)
+exports.User=mongoose.model('User',userSchema)
 exports.Follow=mongoose.model('Follow',followSchema)
 exports.Article=mongoose.model('Article',articleSchema)
 exports.Favorite=mongoose.model('Favorite',favoriteSchema)
