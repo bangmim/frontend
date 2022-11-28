@@ -14,9 +14,20 @@ require("../auth/passportJwt");
 // PUT: update data
 // DELETE: delete data
 
-// router.HttpRequestMethod(endPoint, controller)
+// router.HttpRequestMethod(endPoint, controller(callback))
 router.get('/', (req, res) => {
   res.json({ message: "hello express" })
 })
+
+//controller import(가져오기)
+const auth_controller = require('../controllers/auth_controller');
+const account_controller = require('../controllers/account_controller')
+
+// # AUTH
+router.get('/user', auth, auth_controller.user);
+
+// ACCOUNTS (계정)
+router.post('/accounts/login', account_controller.login);
+router.post('/accounts/register', account_controller.register)
 
 module.exports = router;

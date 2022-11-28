@@ -26,6 +26,9 @@ app.use('/', indexRouter);
 // # ERROR HANDLER
 app.use((err, req, res, next) => {
   console.error(err);
+  // 서버가 에러 객체를 응답코드와 함께 클라이언트에게 전송한다.
+  // 컨트롤러로부터 전달받은 status가 있으면 그 status를 사용한다.
+  // 전달받은 status가 없으면 500(Internal Server Error)로 처리한다.
   res.status(err.status || 500).json(err); 
 })
 
