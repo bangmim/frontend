@@ -110,3 +110,73 @@ exports.register = [
         }
     },
 ]
+
+exports.edit = async(req,res,next)=>{
+    try{
+        // req.user 를 loginUser 변수에 담는다
+        const loginUser= req.user;
+        // req.body로부터 유저의 자기소개(bio)를 얻는다
+        const bio = req.body.bio;
+
+        // 업데이트 쿼리
+        const user= await User.findById(loginUser._id); // ._id(고유 id)를 통해 유저 찾기
+        user.bio= bio;  // 유저의 bio 업데이트
+        await user.save();  // 저장
+
+        res.json(user.bio);
+    }catch(error){
+        next(error)
+    }
+}
+
+exports.upload_image = async(req, res, next)=>{
+    // formidable : 파일이 있는 form을 다룰 때 사용되는 모듈(패키지)
+    const form = formidable({});
+
+    form.parse(req, async (err, fields, files)=>{
+        try {
+            if (err){
+                return next(err);
+            }
+
+            const loginUser= req.user;
+
+            // 이미지에 랜덤 이름을 생성한 뒤 data/users 경로에 저장한다
+            const image = files.image;
+            const oldPath = image.filepath;
+            const ext = image.originalFilename.split(".")[1];
+            const newName = image.newFilename + "." + ext;
+            const newPath = `${__dirname}/../data/users/${newName}`;
+            fs.renameSync(oldPath, newPath);
+            // 또는
+            // fs.copyFileSync(oldPath, newPath);
+
+            // 데이터베이스에 이미지의 이름을 저장한다
+            const user = await User.findById(loginUser._id);
+            user.image = newName;
+            await user.save();
+
+            res.json(newName);
+        }catch(error){
+            next(error)
+        }
+    })
+}
+
+exports.delete_image= async (req, res, next) =>{
+    try{
+        const loginUser= req.user;
+
+        // 유저 이미지 null로 업데이트
+        const user = await User.findById(loginUser._id);
+
+        user.image= null;
+        await user.save();
+
+        // 서버가 응답을 종료한다. (응답 코드 : 200ok)
+        res.end();
+
+    }catch(error){
+        next(error)
+    }
+}

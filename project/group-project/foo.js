@@ -1,4 +1,4 @@
-// Object에 접근하기 ?
+// Object에 접근하기 
 
 const response = {
     body: {

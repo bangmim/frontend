@@ -22,12 +22,21 @@ router.get('/', (req, res) => {
 //controller import(가져오기)
 const auth_controller = require('../controllers/auth_controller');
 const account_controller = require('../controllers/account_controller')
+const article_controller = require('../controllers/article_controller')
 
 // # AUTH
 router.get('/user', auth, auth_controller.user);
 
 // ACCOUNTS (계정)
+// 인증이 필요한 부분은 auth가 필요하다.
 router.post('/accounts/login', account_controller.login);
-router.post('/accounts/register', account_controller.register)
+router.post('/accounts/register', account_controller.register);
+router.post('/accounts/edit', auth, account_controller.edit);
+router.post('/accounts/edit/image', auth, account_controller.upload_image);
+router.delete('/accounts/edit/image', auth, account_controller.delete_image);
+
+// ARTICLES (게시물)
+router.post('/articles', auth, article_controller.create)
+router.get('/articles',auth, article_controller.article_list);
 
 module.exports = router;
