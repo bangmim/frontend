@@ -68,3 +68,164 @@ exports.article_list = async (req, res, next)=>{
         next(error)
     }
 }
+
+exports.article = async(req, res,naxt)=>{
+    try{
+        const loginUser = req.user;
+
+        // url로 전달된 parameter로부터 id를 구한다
+        const id = req.params.id;
+        // 데이터베이스 쿼리
+        const article = await Article
+        .findById(id)
+        .populate("user")
+        .lean();
+
+        // id에 일치하는 게시물이 없는 경우
+        if(!article){
+            const err= new Error("Article not found");
+            err.status = 404;
+            return next(err);
+        }
+        // article 데이터에 isFavorite 속성을 추가한다
+        // isFavorite : 로그인 유저가 좋아하는 게시물이면 true, 아니면 false
+        const favorite = await Favorite
+        .findOne({user: loginUser._id, article:article._id});
+        article.isFavorite = !!favorite     //boolean 연산자로 return 할 수 있다.
+        // article.isFavorite = favorite ? true : false; 와 같은 뜻이다.    //!!느낌표 두개로 삼항연산자를 대체할 수 있다.
+         /* (ex)
+        !!{favorite, notFavorite} ==> true
+        */
+
+        res.json(article)
+
+    }catch (error){
+        next(error)
+    }
+}
+
+//게시물 삭제
+exports.delete = async (req, res, next)=>{
+    try{
+
+        // 요청 url에 담긴 id값
+        const id = req.params.id;
+        // 데이터베이스 쿼리
+        const article = await Article
+        .findById(id);
+
+        // id에 일치하는 게시물이 없을 때
+        if(!article){
+            const err = new Error("Article not Found")
+            err.status = 404;
+            return next(err);
+        }
+
+        await article.delete();
+
+        res.end();      // 200OK
+
+    }catch(error){
+        next(error)
+    }
+}
+
+// 좋아요 표시
+exports.favorite = async (req, res, next)=>{
+    try{
+        const loginUser = req.user;
+        const id = req.params.id;
+
+        const article = await Article.findById(id);
+
+        const favorite = await Favorite
+        .findOne({user: loginUser._id, article: article._id})
+
+        // 이미 좋아요를 누른 게시물일 때
+        if(favorite){
+            const err = new Error("Already favorite article");
+            err.status = 400;
+            return next(err)
+        }
+
+        // 데이터베이스 쿼리
+        const newFavorite = new Favorite({
+            user: loginUser._id,
+            article: article._id
+        })
+        await newFavorite.save();
+
+        // 게시물의 좋아요 수(favoriteCount)를 1 증가시킨다
+        article.favoriteCount++;
+        await article.save();
+
+        res.end();
+
+    }catch (error){
+        next(error)
+    }
+}
+
+// 좋아요 취소
+exports.unfavorite = async (req, res, next)=>{
+    try{
+        const loginUser = req.user;
+        const id = req.params.id;
+
+        const article = await Article.findById(id)
+
+        const favorite = await Favorite
+        .findOne(({user: loginUser._id, article: article._id}));
+
+        // 좋아요 한 게시물이 아닐 때
+        if(!favorite){
+            const err = new Error("No article to unfavorite");
+            err.status=400;
+            return next(err);
+        }
+
+        // favorite 데이터를 삭제
+        await favorite.delete();
+
+        // 게시물의 좋아요 수를 1 감소한다
+        article.favoriteCount --;
+        await article.save();
+
+        res.end();
+
+    }catch(error){
+        next(error)
+    }
+}
+
+// 피드 가져오기
+exports.feed = async(req, res, next)=>{
+    try{
+        const loginUser = req.user;
+
+        const follows = await Follow.find({follower:loginUser._id});
+        const users = [...follows.map(follow => follow.following), loginUser._id];      // follow의 following 속성을 return하는 array에 userid가 추가된 array
+
+        // 유저가 팔로우 하는 유저, 유저 자신의 게시물
+        const articles = await Article
+        .find({user:{$in: users}})              // 몽구스에서 사용하는 메서드   // {$in: users} : user array에 포함된 user
+        .sort([["created","descending"]])       // 생성일 기준, 내림차순
+        .populate("user")
+        .skip(req.query.skip)
+        .limit(req.query.limit)
+        .lean();
+
+        // article 데이터에 isFavorite 속성을 추가한다
+        for(let article of articles){
+            const favorite = await Favorite
+            .findOne({user: loginUser._id, article: article._id});
+
+            article.isFavorite = !!favorite;
+        }
+
+        res.json(articles)
+
+    }catch(error){
+        next(error)
+    }
+}
