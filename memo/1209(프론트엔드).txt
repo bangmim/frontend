@@ -1,0 +1,28 @@
+npx create-react-app (client)   //(프론트엔드 파일 폴더이름)
+
+# 패키지 설치
+리액트 라우터 설치
+npm install react-router-dom       // client 폴더 내로 이동하여 설치
+테일윈드 설치
+npm install -D tailwindcss postcss autoprefixer
+테일윈드 config파일 생성
+npx tailwindcss init -p
+
+# config.js >> 컴포넌트 경로 입력
+content:[] 
+>>>
+content:[
+    "./src/**/*.js"
+],
+
+# src > index.css >>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+# client > .env 만들기 (package.json과 같은 레벨)
+
+# 시작 : npm run start
+
+# src >> components / utils 폴더 만들기
+// 만들어야하는 컴포넌트가 너무 많을 때 명령어를 사용할 수 있다.

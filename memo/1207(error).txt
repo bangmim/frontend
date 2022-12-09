@@ -1,0 +1,3 @@
+ ReferenceError : Cannot access 'x' before initialization
+console.log(x)      // 변수를 초기화하기 전에 변수에 접근한 경우  
+const x = 2022      // 초기화 (initialization)

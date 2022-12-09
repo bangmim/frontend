@@ -1,0 +1,42 @@
+1. server 폴더 내에서 npm init
+>> 현재 디렉터리를 node.js 프로젝트 디렉터리로 만든다.
+(공공데이터를 보내주던 서버를 만드는 셈이다.)
+
+2. package.json 
+Scripts부분에서 추가
+"start" : "node index.js",      //json 형식으로 작성. key와 value 모두 ""쌍따옴표 안에 작성한다.
+"devstart" : "nodemon index.js",
+>> 서버를 시작하는 명력어
+
+3. 필요한 package 및 라이브러리 설치
+한칸 띄어서 작성하면 한번에 여러개를 설치할 수 있다.
+npm install cookie-parser cors dotenv express formidable jsonwebtoken mongoose passport passport-jwt
+
+==============
+# 만들어야 할 폴더 및 파일
+== server 폴더 내에 작성
+- index.js
+
+- package.json
+
+- .env(enviroment variables)
+
+- routes/ (/ : 경로)
+    index.js
+- controllers/
+    account_controller.js
+    article_controller.js
+    auth_controller.js
+    comment_controller.js
+    profile_controller.js
+    search_controller.js
+- models/
+    model.js
+- auth/
+    passportJwt.js
+- data/
+    articles/
+    users/
+
+# 시작
+npm run devstart(script 속성 key 값)

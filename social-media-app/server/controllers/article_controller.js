@@ -1,7 +1,6 @@
 const { Follow, Article, Favorite } = require("../models/model");
 const formidable = require("formidable");
 const fs = require("fs");
-const { isReadable } = require("stream");
 
 // 게시물 등록
 exports.create = async (req, res, next) => {
@@ -15,6 +14,7 @@ exports.create = async (req, res, next) => {
                 return next(err);
             }
 
+            // key == images
             const images = files.images instanceof Array ? files.images : new Array(files.images);
 
             // 이미지가 업로드 되지 않았을 때
@@ -22,8 +22,8 @@ exports.create = async (req, res, next) => {
                 const err = new Error("image must be specified");
                 err.status = 400;
                 return next(err);
-            }
-
+              }
+              
             // 이미지를 data/articles 경로에 저장한다.
             const photos = images.map(photo => {
                 const oldPath = photo.filepath;
@@ -32,7 +32,7 @@ exports.create = async (req, res, next) => {
                 // __dir 변수는 현재의 위치를 return 해주는 변수
                 const newPath = `${__dirname}/../data/articles/${newName}`;
                 fs.renameSync(oldPath, newPath);
-
+                // 또는 fs.copyFileSync(oldPath, newPath);
                 return newName;
             })
 
