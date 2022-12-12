@@ -1,0 +1,6 @@
+server > npm run devstart : api 서버 켜기   (localhost : 3000)
+client > npm start(또는 run start) : react 켜기 (localhost >>3001)
+
+README.md에 작성한 파일 컴포넌트/유틸 폴더에 추가하기
+
+createContext : children에서도 해당 context를 사용할 수 있다
