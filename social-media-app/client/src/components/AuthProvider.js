@@ -19,6 +19,7 @@ export default function AuthProvider ({children}){
             setUser(data)       // 유저 state를 업데이트
         })
         .catch(error =>{
+            // 에러 출력
             console.log(error)
             setError(error);
         })
@@ -31,6 +32,7 @@ export default function AuthProvider ({children}){
         setUser(data.user);
         // 로컬스토리지에 토큰을 저장한다
         localStorage.setItem("token", data.token);
+        // Login.js >> navigate("/") : Feed(main, home)로 이동한다
         callback()
     }
 
