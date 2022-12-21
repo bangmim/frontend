@@ -34,7 +34,7 @@ function App(){
             <Route path="articles" element={<ArticleList/>}/>
             <Route path="search" element={<Search/>}/>
             <Route path="create" element={<ArticleCreate/>}/>
-            <Route parh="article/:articleId">
+            <Route path="article/:articleId">
               <Route index element={<ArticleView/>}/>
               <Route path="comments" element={<Comments/>}/>
             </Route>

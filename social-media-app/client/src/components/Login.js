@@ -79,7 +79,7 @@ export default function Login(){
                     <input
                     type="checkbox"
                     // onClick 아닌 onChange다
-                    onChange={(e)=>setShowPassword(e.target.value)}
+                    onChange={(e)=>setShowPassword(e.target.checked)}
                     />{" "}
                     Show password
                 </label>

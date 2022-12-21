@@ -8,7 +8,35 @@ export default function ArticleCreate(){
     const [files, setFiles]=useState({});
     const [text, setText]= useState("");
 
-    function handleSubmit(e){}
+    function handleSubmit(e){
+        // preventDefault가 실행되어야 navigate가 작동한다.
+        // feed를 작성하지 않아서 보이지 않은상태
+        e.preventDefault();
+
+        const formData = new FormData(e.target);    // FormData의 인스턴스를 만든다
+
+        fetch(`${process.env.REACT_APP_SERVER}/articles`,{
+            method: "POST",
+            headers:{   // header에 인증이 필요하다
+                "Authorization" : `Bearer ${localStorage.getItem("token")}`
+            },
+            body: formData
+        })
+        .then(res=>{
+            if(!res.ok){
+                throw res;
+            }
+            return res.json();
+        })
+        .then(data=>{
+            // 피드 페이지로 이동한다 >> 작성한 게시글을 볼 수 있다
+            navigate("/", {replace: true});
+        })
+        .catch(error =>{
+            console.log(error)
+            alert("Something's broken")
+        })
+    }
 
     console.log(files)
 
@@ -20,7 +48,7 @@ export default function ArticleCreate(){
     return(
         <form onSubmit={handleSubmit} className="px-2">
             <div className="mb-2">
-                <label className="block">Photos</label>
+                <label className="block">포토</label>
                 <input
                 type="file"
                 name="images"

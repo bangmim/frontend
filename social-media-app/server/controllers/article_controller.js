@@ -69,7 +69,7 @@ exports.article_list = async (req, res, next)=>{
     }
 }
 
-exports.article = async(req, res,naxt)=>{
+exports.article = async(req, res, next)=>{
     try{
         const loginUser = req.user;
 
@@ -81,6 +81,7 @@ exports.article = async(req, res,naxt)=>{
         .populate("user")
         .lean();
 
+        console.log(article)
         // id에 일치하는 게시물이 없는 경우
         if(!article){
             const err= new Error("Article not found");
@@ -100,6 +101,7 @@ exports.article = async(req, res,naxt)=>{
         res.json(article)
 
     }catch (error){
+        console.log(error)
         next(error)
     }
 }
