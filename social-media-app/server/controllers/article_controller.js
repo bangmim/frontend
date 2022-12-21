@@ -207,16 +207,16 @@ exports.feed = async(req, res, next)=>{
 
         const follows = await Follow.find({follower:loginUser._id});
         const users = [...follows.map(follow => follow.following), loginUser._id];      // follow의 following 속성을 return하는 array에 userid가 추가된 array
+                
 
         // 유저가 팔로우 하는 유저, 유저 자신의 게시물
         const articles = await Article
-        .find({user:{$in: users}})              // 몽구스에서 사용하는 메서드   // {$in: users} : user array에 포함된 user
+        .find({ user : {$in: users}})              // 몽구스에서 사용하는 메서드   // {$in: users} : user array에 포함된 user
         .sort([["created","descending"]])       // 생성일 기준, 내림차순
         .populate("user")
         .skip(req.query.skip)
         .limit(req.query.limit)
         .lean();
-
         // article 데이터에 isFavorite 속성을 추가한다
         for(let article of articles){
             const favorite = await Favorite
@@ -224,9 +224,10 @@ exports.feed = async(req, res, next)=>{
 
             article.isFavorite = !!favorite;
         }
-
+        
+        
         res.json(articles)
-
+        
     }catch(error){
         next(error)
     }

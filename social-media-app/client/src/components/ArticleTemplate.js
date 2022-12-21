@@ -21,6 +21,7 @@ export default function ArticleTemplate({ article, favorite, unfavorite, deleteA
         }
     }
 // console.log(article)
+
     return (
         <>
             <div className="px-2 mb-2 flex justify-between items-center">
