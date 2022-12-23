@@ -91,6 +91,7 @@ export default function Feed(){
             if(!res.ok){
                 throw res;
             }
+            // article 업데이트
             const updatedArticles = articles.filter(article=> articleId !== article._id);
             setArticles(updatedArticles);
         })
