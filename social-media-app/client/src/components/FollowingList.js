@@ -8,8 +8,6 @@ export default function FollowingList() {
     const { username } = useParams();
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const auth = useContext(AuthContext);
-    const isMaster = auth.user.username === username;
     const [following, setFollowing] = useState([]);
 
     useEffect(() => {
@@ -31,18 +29,24 @@ export default function FollowingList() {
     console.log(following)
 
     const followingList = following.map(follow => (
-        <li key={follow._id}>{follow.following.username} </li>
+        <li key={follow._id}>
+            <Avatar user={follow.following} />
+        </li>
     ))
 
     return (
         <>
             <div>
-            <Avatar user={username} />
-            </div>
+                <h1 className="text-2xl mb-4">Following</h1>
 
-        <ul className="">
-            {followingList}
-        </ul>
+                <ul className="">
+                    {followingList}
+                </ul>
+
+                {!isLoaded && <p>fetching following...</p>}
+                {error && <p>failed to fetch following</p>}
+
+            </div>
         </>
     )
 

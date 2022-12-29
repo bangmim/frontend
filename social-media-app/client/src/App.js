@@ -40,12 +40,19 @@ function App() {
               <Route index element={<ArticleView />} />
               <Route path="comments" element={<Comments />} />
             </Route>
-            <Route path="profile/:username" element={<Profile />}/>
-              <Route path="accounts/edit" element={<Accounts />} />
-              <Route path="profile/:username/follower" element={<FollowersList />} />
-              <Route path="profile/:username/following" element={<FollowingList />} />
-           
 
+            {/* profile/:username/ : 중복되는 부분 >> 트리형이 가능하다 */}
+            {/* <Route path="profile/:username" element={<Profile />}/> */}
+            {/* <Route path="profile/:username/followers" element={<FollowersList />} /> */}
+            {/* <Route path="profile/:username/following" element={<FollowingList />} /> */}
+
+            <Route path="profile/:username">
+              <Route index element={<Profile />} />
+              <Route path="followers" element={<FollowersList />} />
+              <Route path="following" element={<FollowingList/>}/>
+            </Route>
+
+            <Route path="accounts/edit" element={<Accounts />} />
           </Route>
 
           {/* 인증이 필요하지 않은 라우트 (로그인이 필요하지 않음) */}
