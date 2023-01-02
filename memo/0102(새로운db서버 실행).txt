@@ -1,0 +1,10 @@
+node에 populatedb.js 파일 실행하기
+node populatedb mongodb://127.0.0.1:27017/social_media_db
+
+##
+기존db 삭제
+서버 실행 : npm run devstart
+
+##
+개발환경
+development enviroment -> production development

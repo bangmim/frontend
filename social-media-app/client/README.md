@@ -39,3 +39,9 @@ Modal.js    (모달)
 # 유틸리티 함수
 - 데이터 가져오기
 fetchData.js    
+
+# production enviroment 구축하기
+
+클라이언트 : Github pages (https://pages.github.com)
+서버 : Railway (railway.app)
+데이터베이스 : MongoDB Atlas

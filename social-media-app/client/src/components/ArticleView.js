@@ -37,7 +37,7 @@ export default function ArticleView(){
             }
             const editedArticle = {...article, 
                 isFavorite: true, 
-                favoriteCounts:article.favoriteCount +1};
+                favoriteCount:article.favoriteCount +1};
                 setArticle(editedArticle);
         })
         .catch(error=>{
